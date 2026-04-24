@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en,de",
+  "useGitignore": true,
+  "words": [
+    "raptorxilef",
+    "biomejs",
+    "commitlint",
+    "stylelint",
+    "recess",
+    "phpsab",
+    "intelephense",
+    "xampp",
+    "twokinds",
+    "Testumgebung",
+    "meiner",
+    "Einstellungen",
+    "Maywald",
+    "showtoken",
+    "KONTROLLE",
+    "BIOME"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "vendor/**",
+    "public/assets/**",
+    "CHANGELOG.md",
+    "package-lock.json",
+    "*.min.*"
+  ],
+  "dictionaries": ["de-de"]
+}

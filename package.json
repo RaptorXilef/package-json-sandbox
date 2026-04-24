@@ -23,22 +23,26 @@
     "release:showtoken": "echo $GITHUB_TOKEN",
     "// --- COMMIT-KONTROLLE-HUSKY ---": "",
     "prepare": "husky",
-    "// --- LINTER-BIOM ---": "",
+    "// --- LINTER-BIOME ---": "",
     "biome:format": "biome format --write .",
     "biome:lint": "biome lint .",
     "biome:check": "biome check --write .",
     "biome:fix": "biome check --fix .",
     "// --- LINT ---": "",
     "lint:css": "stylelint \"**/*.scss\"",
-    "lint:css:fix": "stylelint \"**/*.scss\" --fix"
+    "lint:css:fix": "stylelint \"**/*.scss\" --fix",
+    "// --- LINT SPELL ---": "",
+    "lint:spell": "cspell lint \"**\" --no-progress --show-suggestions"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.13",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
+    "@cspell/dict-de-de": "^4.1.2",
     "@release-it/conventional-changelog": "^11.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
+    "cspell": "^10.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "release-it": "^20.0.1",
@@ -55,6 +59,7 @@
   ],
   "lint-staged": {
     "*.{js,json}": "biome check --write --no-errors-on-unmatched",
-    "*.scss": "stylelint --fix"
+    "*.scss": "stylelint --fix",
+    "*": "cspell lint --no-must-find-files --no-progress"
   }
 }
