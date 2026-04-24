@@ -1,0 +1,22 @@
+{
+  "name": "@raptorxilef/package-json-sandbox",
+  "version": "0.1.0",
+  "description": "Testumgebung meiner NPM/package.json Einstellungen",
+  "type": "module",
+  "author": "Felix Maywald",
+  "license": "CC-BY-NC-SA-4.0",
+  "engines": {
+    "node": ">=25.3.0",
+    "npm": ">=11.11.0"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {},
+  "overrides": {},
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
