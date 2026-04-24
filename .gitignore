@@ -237,3 +237,11 @@ ToDo*.md
 !cspell-denglisch.txt
 !cspell-proper-names.txt
 !cspell-technical.txt
+!cspell-folder-names.txt
+
+# ==============================================================================
+# TEST-FOLDER
+# ==============================================================================
+
+public/assets/img/test/*
+src/assets/images/test/*

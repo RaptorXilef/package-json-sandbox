@@ -3,5 +3,3 @@ committen
 versioniert
 versionieren
 Minifizierte
-daten
-notizen

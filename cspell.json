@@ -29,6 +29,11 @@
       "name": "tech-terms",
       "path": "./cspell-technical.txt",
       "addWords": true
+    },
+    {
+      "name": "folder-names",
+      "path": "./cspell-folder-names.txt",
+      "addWords": true
     }
   ],
   "dictionaries": [
@@ -46,7 +51,8 @@
     "project-words",
     "denglisch-words",
     "proper-names",
-    "tech-terms"
+    "tech-terms",
+    "folder-names"
   ],
   "ignorePaths": [
     "node_modules/**",
