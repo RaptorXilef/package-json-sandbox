@@ -2,6 +2,17 @@
 
 
 
+## [0.4.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.4.0...v0.4.1) (2026-04-24)
+
+### 🐛 Bug Fixes
+
+* **biome:** suppress markdown diagnostics using force-ignore patterns ([7e1ea79](https://github.com/RaptorXilef/package-json-sandbox/commit/7e1ea79c5fd37bca4246319161eb9825f01c2b89))
+* **lint:** suppress false positives and ignore markdown in linter ([461e706](https://github.com/RaptorXilef/package-json-sandbox/commit/461e706c25115d5121f77d2be776facf999ee0e4))
+
+# Changelog
+
+
+
 ## [0.4.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.3.1...v0.4.0) (2026-04-24)
 
 ### 🚀 Features
