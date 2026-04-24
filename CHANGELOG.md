@@ -2,6 +2,21 @@
 
 
 
+## [0.11.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.10.0...v0.11.0) (2026-04-24)
+
+### 🚀 Features
+
+* **env:** finalize environment-driven architecture and php-vite bridge ([04ba4fc](https://github.com/RaptorXilef/package-json-sandbox/commit/04ba4fcda4f59647904cfbb7a38741ad60c7d488))
+* **php:** finalize index.php with dotenv support and asset helper ([8e6ec5c](https://github.com/RaptorXilef/package-json-sandbox/commit/8e6ec5ce1f15a037d322070316522672d263ce0d))
+
+### 💎 Styling
+
+* downgrade strict-value rules to warning for better dev-flow ([579b541](https://github.com/RaptorXilef/package-json-sandbox/commit/579b5414cbc33321211b20284cda4ac9d504848a))
+
+### 🧹 Chore / Maintenance
+
+* **vscode:** optimize settings.json and implement dynamic paths ([0dd9d76](https://github.com/RaptorXilef/package-json-sandbox/commit/0dd9d76d3ec51483e7acb1afa8696b4683450fdc))
+
 ## [0.10.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.9.1...v0.10.0) (2026-04-24)
 
 ### 🚀 Features
