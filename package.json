@@ -34,9 +34,13 @@
     "// --- LINT SPELL ---": "",
     "lint:spell": "cspell lint \"**\" --no-progress --show-suggestions",
     "// --- LINT MARKDOWN ---": "",
-    "lint:md": "markdownlint-cli2"
+    "lint:md": "markdownlint-cli2",
+    "// --- LINT A11Y (AXE) ---": "",
+    "lint:a11y": "axe public/index.html",
+    "lint:a11y:url": "axe http://localhost/package-json-sandbox"
   },
   "devDependencies": {
+    "@axe-core/cli": "^4.11.2",
     "@biomejs/biome": "2.4.13",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
