@@ -18,7 +18,8 @@
     "release:patch": "release-it --increment=patch --ci",
     "ci:release:test": "release-it --dry-run --ci",
     "release:init": "release-it --first-release",
-    "changelog:rebuild": "conventional-changelog --config changelog-config.js -i CHANGELOG.md -s -r 0"
+    "changelog:rebuild": "conventional-changelog --config changelog-config.js -i CHANGELOG.md -s -r 0",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
@@ -26,6 +27,7 @@
     "@release-it/conventional-changelog": "^11.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
+    "husky": "^9.1.7",
     "release-it": "^20.0.1"
   },
   "overrides": {},
