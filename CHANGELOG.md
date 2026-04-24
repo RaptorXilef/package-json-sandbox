@@ -2,6 +2,12 @@
 
 
 
+## [0.9.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.9.0...v0.9.1) (2026-04-24)
+
+### 🐛 Bug Fixes
+
+* **assets:** enhance image script to preserve folder structure and animations ([4460f86](https://github.com/RaptorXilef/package-json-sandbox/commit/4460f869cbb2e66e9401d18826d1f44d681b76cb))
+
 ## [0.9.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.8.0...v0.9.0) (2026-04-24)
 
 ### 🚀 Features
