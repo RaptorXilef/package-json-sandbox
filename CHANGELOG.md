@@ -2,6 +2,17 @@
 
 
 
+## [0.10.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.9.1...v0.10.0) (2026-04-24)
+
+### 🚀 Features
+
+* **php:** implement dynamic vite asset loader for dev and prod modes ([19d199b](https://github.com/RaptorXilef/package-json-sandbox/commit/19d199bca75fdf4183993549e74b1d0124f37a24))
+* **tooling:** implement vite for asset bundling and scss processing ([f84c9a9](https://github.com/RaptorXilef/package-json-sandbox/commit/f84c9a981b0210ab8ed9d6ccec5f9927c9fed357))
+
+### 🐛 Bug Fixes
+
+* **vite:** enable cors and stabilize hmr for local dev environment ([8e41ead](https://github.com/RaptorXilef/package-json-sandbox/commit/8e41ead30a5d909292b5ad9356025f819fdf3eeb))
+
 ## [0.9.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.9.0...v0.9.1) (2026-04-24)
 
 ### 🐛 Bug Fixes
