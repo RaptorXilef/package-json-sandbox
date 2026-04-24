@@ -235,3 +235,5 @@ ToDo*.md
 !cspell-project.txt
 !cspell-general.txt
 !cspell-denglisch.txt
+!cspell-proper-names.txt
+!cspell-technical.txt

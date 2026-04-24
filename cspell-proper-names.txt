@@ -1,0 +1,11 @@
+biomejs
+commitlint
+intelephense
+lighthouseci
+phpcs
+phpsab
+phpstan
+phpunit
+sqlite
+stylelint
+xampp

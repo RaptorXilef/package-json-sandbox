@@ -1,0 +1,6 @@
+ehthumbs
+stackdump
+buildpath
+nbproject
+phar
+esktop

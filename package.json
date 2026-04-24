@@ -32,7 +32,9 @@
     "lint:css": "stylelint \"**/*.scss\"",
     "lint:css:fix": "stylelint \"**/*.scss\" --fix",
     "// --- LINT SPELL ---": "",
-    "lint:spell": "cspell lint \"**\" --no-progress --show-suggestions"
+    "lint:spell": "cspell lint \"**\" --no-progress --show-suggestions",
+    "// --- LINT MARKDOWN ---": "",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"!node_modules/**\""
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.13",
@@ -45,6 +47,7 @@
     "cspell": "^10.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "markdownlint-cli2": "^0.22.1",
     "release-it": "^20.0.1",
     "stylelint": "^17.9.0",
     "stylelint-config-recess-order": "^7.7.0",
@@ -60,6 +63,7 @@
   "lint-staged": {
     "*.{js,json}": "biome check --write --no-errors-on-unmatched",
     "*.scss": "stylelint --fix",
+    "*.md": "markdownlint-cli2 --fix",
     "*": "cspell lint --no-must-find-files --no-progress"
   }
 }
