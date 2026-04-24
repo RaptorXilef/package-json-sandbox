@@ -4,3 +4,4 @@ buildpath
 nbproject
 phar
 esktop
+wcag

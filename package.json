@@ -37,7 +37,8 @@
     "lint:md": "markdownlint-cli2",
     "// --- LINT A11Y (AXE) ---": "",
     "lint:a11y": "axe public/index.html",
-    "lint:a11y:url": "axe http://localhost/package-json-sandbox"
+    "lint:a11y:url": "axe http://localhost/package-json-sandbox",
+    "ci:lint:a11y": "axe --ci --tags wcag2a,wcag2aa http://localhost:3000"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.11.2",
