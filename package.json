@@ -41,6 +41,7 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@cspell/dict-de-de": "^4.1.2",
+    "@markuplint/html-spec": "^4.18.0",
     "@release-it/conventional-changelog": "^11.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
@@ -48,6 +49,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "markdownlint-cli2": "^0.22.1",
+    "markuplint": "^4.18.1",
     "release-it": "^20.0.1",
     "stylelint": "^17.9.0",
     "stylelint-config-recess-order": "^7.7.0",
@@ -61,8 +63,13 @@
     "not dead"
   ],
   "lint-staged": {
+    "*.php": [
+      "vendor/bin/phpcs",
+      "vendor/bin/phpstan analyze"
+    ],
     "*.{js,json}": "biome check --write --no-errors-on-unmatched",
     "*.scss": "stylelint --fix",
+    "*.html": "markuplint",
     "*.md": "markdownlint-cli2 --fix",
     "*": "cspell lint --no-must-find-files --no-progress"
   }
