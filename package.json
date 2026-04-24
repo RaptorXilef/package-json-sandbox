@@ -10,7 +10,7 @@
     "npm": ">=11.11.0"
   },
   "scripts": {
-    "test": "node --test",
+    "node_test": "node --test",
     "// --- RELEASE-MANAGEMENT ---": "",
     "release": "release-it",
     "release:alpha": "release-it --preRelease=alpha",
@@ -38,7 +38,12 @@
     "// --- LINT A11Y (AXE) ---": "",
     "lint:a11y": "axe public/index.html",
     "lint:a11y:url": "axe http://localhost/package-json-sandbox",
-    "ci:lint:a11y": "axe --ci --tags wcag2a,wcag2aa http://localhost:3000"
+    "ci:lint:a11y": "axe --ci --tags wcag2a,wcag2aa http://localhost:3000",
+    "// --- VITEST JS-TESTS ---": "",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.11.2",
@@ -48,6 +53,7 @@
     "@cspell/dict-de-de": "^4.1.2",
     "@markuplint/html-spec": "^4.18.0",
     "@release-it/conventional-changelog": "^11.0.0",
+    "@vitest/ui": "^4.1.5",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "cspell": "^10.0.0",
@@ -59,7 +65,8 @@
     "stylelint": "^17.9.0",
     "stylelint-config-recess-order": "^7.7.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-declaration-strict-value": "^1.11.1"
+    "stylelint-declaration-strict-value": "^1.11.1",
+    "vitest": "^4.1.5"
   },
   "overrides": {
     "uuid": "^14.0.0"
@@ -74,7 +81,11 @@
       "vendor/bin/phpcs",
       "vendor/bin/phpstan analyze"
     ],
-    "*.{js,json}": "biome check --write --no-errors-on-unmatched",
+    "*.json": "biome check --write --no-errors-on-unmatched",
+    "*.js": [
+      "biome check --write --no-errors-on-unmatched",
+      "vitest related --run"
+    ],
     "*.scss": "stylelint --fix",
     "*.html": "markuplint",
     "*.md": "markdownlint-cli2 --fix",
