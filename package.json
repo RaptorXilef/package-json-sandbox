@@ -34,7 +34,7 @@
     "// --- LINT SPELL ---": "",
     "lint:spell": "cspell lint \"**\" --no-progress --show-suggestions",
     "// --- LINT MARKDOWN ---": "",
-    "lint:md": "markdownlint-cli2 \"**/*.md\" \"!node_modules/**\""
+    "lint:md": "markdownlint-cli2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.13",
