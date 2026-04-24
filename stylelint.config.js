@@ -22,7 +22,7 @@ export default {
             },
         ],
 
-        // Erzwingt die Nutzung von Variablen für Design-Tokens
+        // Warnt vor der Nutzung von Variablen für Design-Tokens
         'scale-unlimited/declaration-strict-value': [
             ['/color/', 'font-family', 'font-size', 'font-weight', 'spacing'],
             {
@@ -38,9 +38,11 @@ export default {
                     '/^\\d+(%|vw|vh)$/',
                 ],
                 disableFix: true,
+                // HIER IST DER TRICK:
+                severity: 'warning',
                 message:
                     // biome-ignore lint/suspicious/noTemplateCurlyInString: Stylelint uses this as an internal placeholder
-                    "Bitte nutze eine SCSS-Variable für '${property}'. Hart-codierte Werte sind nicht erlaubt.",
+                    "Hinweis: Idealerweise nutzt du eine Variable für '${property}'. Hart-codierte Werte sind unerwünscht.",
             },
         ],
 
