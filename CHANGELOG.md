@@ -2,6 +2,17 @@
 
 
 
+## [0.4.2](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.4.1...v0.4.2) (2026-04-24)
+
+### 🧹 Chore / Maintenance
+
+* **cspell:** implement comprehensive multi-dictionary system and language optimization ([9f1c3d1](https://github.com/RaptorXilef/package-json-sandbox/commit/9f1c3d1605274ab84ecaca9471c1f25b1a961e99))
+* **tooling:** integrate cspell for english and german spell checking ([9529869](https://github.com/RaptorXilef/package-json-sandbox/commit/9529869d441d79d55a0bb14187560ca6e6033a16))
+
+# Changelog
+
+
+
 ## [0.4.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.4.0...v0.4.1) (2026-04-24)
 
 ### 🐛 Bug Fixes
