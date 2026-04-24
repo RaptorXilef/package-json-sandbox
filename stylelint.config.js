@@ -1,0 +1,60 @@
+/**
+ * @file stylelint.config.js
+ * @description Spezialisierte SCSS-Qualitätssicherung.
+ */
+
+export default {
+    extends: [
+        'stylelint-config-standard-scss',
+        'stylelint-config-recess-order', // Erzwingt logische Reihenfolge (recess)
+    ],
+    plugins: ['stylelint-declaration-strict-value'],
+    rules: {
+        'alpha-value-notation': 'number',
+        'no-empty-source': null,
+        'scss/at-rule-no-unknown': true,
+
+        // Begrenzt die Verschachtelung auf 3 Ebenen (dein Standard)
+        'max-nesting-depth': [
+            3,
+            {
+                ignorePseudoClasses: ['hover', 'focus', '&.theme-night', 'body.theme-night &'],
+            },
+        ],
+
+        // Erzwingt die Nutzung von Variablen für Design-Tokens
+        'scale-unlimited/declaration-strict-value': [
+            ['/color/', 'font-family', 'font-size', 'font-weight', 'spacing'],
+            {
+                ignoreValues: [
+                    '0',
+                    'inherit',
+                    'transparent',
+                    'initial',
+                    'none',
+                    'currentColor',
+                    'sans-serif',
+                    'arial',
+                    '/^\\d+(%|vw|vh)$/',
+                ],
+                disableFix: true,
+                message:
+                    "Bitte nutze eine SCSS-Variable für '${property}'. Hartcodierte Werte sind nicht erlaubt.",
+            },
+        ],
+
+        // Erzwingt dein BEM Muster
+        'selector-class-pattern': [
+            '^([a-z][a-z0-9]*)(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$',
+            {
+                message:
+                    'Klassennamen müssen dem BEM-Muster entsprechen (z.B. .block__element--modifier)',
+            },
+        ],
+    },
+    ignoreFiles: [
+        '**/_palette.scss', // Enthält die Definitionen der hartcodierten Werte
+        'vendor/**/*.scss',
+        'public/assets/**/*.css',
+    ],
+};

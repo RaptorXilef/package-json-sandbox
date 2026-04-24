@@ -6,26 +6,26 @@
 
 ### 🧹 Chore / Maintenance
 
-* **release:** finalize automated github release integration ([8034b00](https://github.com/RaptorXilef/package-json-sandbox/commit/8034b0013dd5e457bd3b50031d6e94fa815da8e4))
+- **release:** finalize automated github release integration ([8034b00](https://github.com/RaptorXilef/package-json-sandbox/commit/8034b0013dd5e457bd3b50031d6e94fa815da8e4))
 
 ## [0.3.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.2.0...v0.3.0) (2026-04-24)
 
 ### 🚀 Features
 
-* **tooling:** integrate biome for ultra-fast linting and formatting ([dff5ce2](https://github.com/RaptorXilef/package-json-sandbox/commit/dff5ce2ec3c23d7c1c41bcbf94bb05ae07822aa4))
+- **tooling:** integrate biome for ultra-fast linting and formatting ([dff5ce2](https://github.com/RaptorXilef/package-json-sandbox/commit/dff5ce2ec3c23d7c1c41bcbf94bb05ae07822aa4))
 
 ### ⚙️ Refactoring
 
-* **lint:** disable subject-case to allow proper names in commits ([9a231f5](https://github.com/RaptorXilef/package-json-sandbox/commit/9a231f53a8c1da6c094554072a106d4dc1135be6))
-* **lint:** migrate ESLint and Prettier configurations to Biome ([6385268](https://github.com/RaptorXilef/package-json-sandbox/commit/638526898830f47ade98c3e9fe73abcb6c8e80f7))
+- **lint:** disable subject-case to allow proper names in commits ([9a231f5](https://github.com/RaptorXilef/package-json-sandbox/commit/9a231f53a8c1da6c094554072a106d4dc1135be6))
+- **lint:** migrate ESLint and Prettier configurations to Biome ([6385268](https://github.com/RaptorXilef/package-json-sandbox/commit/638526898830f47ade98c3e9fe73abcb6c8e80f7))
 
 ### 💎 Styling
 
-* **biome:** apply automated project-wide formatting and linting fixes ([7366d7c](https://github.com/RaptorXilef/package-json-sandbox/commit/7366d7c4a0255dece42b9c3fca58b009df139a6b))
+- **biome:** apply automated project-wide formatting and linting fixes ([7366d7c](https://github.com/RaptorXilef/package-json-sandbox/commit/7366d7c4a0255dece42b9c3fca58b009df139a6b))
 
 ### 🧹 Chore / Maintenance
 
-* **git:** implement lint-staged for automated pre-commit checks ([92f68bc](https://github.com/RaptorXilef/package-json-sandbox/commit/92f68bcfc41267d813e53afd9cf75a81751a1975))
+- **git:** implement lint-staged for automated pre-commit checks ([92f68bc](https://github.com/RaptorXilef/package-json-sandbox/commit/92f68bcfc41267d813e53afd9cf75a81751a1975))
 
 # Changelog
 
