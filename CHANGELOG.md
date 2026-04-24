@@ -2,6 +2,16 @@
 
 
 
+## [0.6.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.5.0...v0.6.0) (2026-04-24)
+
+### 🚀 Features
+
+* **tooling:** integrate markuplint with PHP support for HTML validation ([2ded11c](https://github.com/RaptorXilef/package-json-sandbox/commit/2ded11c9f9a6495c0a6f2f6485210910e87b42ae))
+
+### 🧹 Chore / Maintenance
+
+* **deps:** bump uuid override to v14 to satisfy audit requirements ([88bc6ee](https://github.com/RaptorXilef/package-json-sandbox/commit/88bc6eead337fe879d93f997307d893984df3ebd))
+
 ## [0.5.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.4.2...v0.5.0) (2026-04-24)
 
 ### 🚀 Features
