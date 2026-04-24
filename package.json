@@ -56,7 +56,9 @@
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-declaration-strict-value": "^1.11.1"
   },
-  "overrides": {},
+  "overrides": {
+    "uuid": "^14.0.0"
+  },
   "browserslist": [
     "> 0.5%",
     "last 2 versions",

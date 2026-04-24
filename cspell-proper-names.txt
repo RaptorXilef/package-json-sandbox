@@ -2,6 +2,7 @@ biomejs
 commitlint
 intelephense
 lighthouseci
+markuplint
 phpcs
 phpsab
 phpstan
