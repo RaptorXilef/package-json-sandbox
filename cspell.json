@@ -3,23 +3,50 @@
   "version": "0.2",
   "language": "en,de",
   "useGitignore": true,
-  "words": [
-    "raptorxilef",
-    "biomejs",
-    "commitlint",
-    "stylelint",
-    "recess",
-    "phpsab",
-    "intelephense",
-    "xampp",
-    "twokinds",
-    "Testumgebung",
-    "meiner",
-    "Einstellungen",
-    "Maywald",
-    "showtoken",
-    "KONTROLLE",
-    "BIOME"
+  "import": ["@cspell/dict-de-de/cspell-ext.json"],
+  "dictionaryDefinitions": [
+    {
+      "name": "general-words",
+      "path": "./cspell-general.txt",
+      "addWords": true
+    },
+    {
+      "name": "project-words",
+      "path": "./cspell-project.txt",
+      "addWords": true
+    },
+    {
+      "name": "denglisch-words",
+      "path": "./cspell-denglisch.txt",
+      "addWords": true
+    },
+    {
+      "name": "proper-names",
+      "path": "./cspell-proper-names.txt",
+      "addWords": true
+    },
+    {
+      "name": "tech-terms",
+      "path": "./cspell-technical.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": [
+    "en_US",
+    "de-de",
+    "softwareTerms",
+    "php",
+    "node",
+    "html",
+    "css",
+    "bash",
+    "npm",
+    "misc",
+    "general-words",
+    "project-words",
+    "denglisch-words",
+    "proper-names",
+    "tech-terms"
   ],
   "ignorePaths": [
     "node_modules/**",
@@ -27,7 +54,7 @@
     "public/assets/**",
     "CHANGELOG.md",
     "package-lock.json",
+    ".gitignore",
     "*.min.*"
-  ],
-  "dictionaries": ["de-de"]
+  ]
 }

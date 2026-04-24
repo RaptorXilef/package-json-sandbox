@@ -20,7 +20,7 @@
     "ci:release:test": "release-it --dry-run --ci",
     "release:init": "release-it --first-release",
     "changelog:rebuild": "conventional-changelog --config changelog-config.js -i CHANGELOG.md -s -r 0",
-    "release:showtoken": "echo $GITHUB_TOKEN",
+    "release:show_token": "echo $GITHUB_TOKEN",
     "// --- COMMIT-KONTROLLE-HUSKY ---": "",
     "prepare": "husky",
     "// --- LINTER-BIOME ---": "",

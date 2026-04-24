@@ -14,7 +14,7 @@ export default {
         'no-empty-source': null,
         'scss/at-rule-no-unknown': true,
 
-        // Begrenzt die Verschachtelung auf 3 Ebenen (dein Standard)
+        // Begrenzt die Verschachtlung auf 3 Ebenen (dein Standard)
         'max-nesting-depth': [
             3,
             {
@@ -40,7 +40,7 @@ export default {
                 disableFix: true,
                 message:
                     // biome-ignore lint/suspicious/noTemplateCurlyInString: Stylelint uses this as an internal placeholder
-                    "Bitte nutze eine SCSS-Variable für '${property}'. Hartcodierte Werte sind nicht erlaubt.",
+                    "Bitte nutze eine SCSS-Variable für '${property}'. Hart-codierte Werte sind nicht erlaubt.",
             },
         ],
 
@@ -54,7 +54,7 @@ export default {
         ],
     },
     ignoreFiles: [
-        '**/_palette.scss', // Enthält die Definitionen der hartcodierten Werte
+        '**/_palette.scss', // Enthält die Definitionen der hart-codierten Werte
         'vendor/**/*.scss',
         'public/assets/**/*.css',
     ],
