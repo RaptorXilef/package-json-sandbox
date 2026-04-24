@@ -2,6 +2,16 @@
 
 
 
+## [0.4.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.3.1...v0.4.0) (2026-04-24)
+
+### 🚀 Features
+
+* **stylelint:** integrate stylelint for advanced SCSS validation ([1c13370](https://github.com/RaptorXilef/package-json-sandbox/commit/1c13370132bcdbf844bb0048474892c38bbff3f2))
+
+# Changelog
+
+
+
 ## [0.3.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.3.0...v0.3.1) (2026-04-24)
 
 ### 🧹 Chore / Maintenance
