@@ -22,10 +22,24 @@ const config = await conventionalCommits({
     ],
 });
 
-// Die CLI benötigt direkten Zugriff auf writerOpts und parserOpts
 const exportConfig = config.conventionalChangelog || config;
 
-// Sicherstellen, dass die Sortierung exakt deiner Liste entspricht
+if (exportConfig.parserOpts) {
+    /**
+     * DER ULTIMATIVE REGEX:
+     * ^[^a-zA-Z]* -> Ignoriere ALLES am Anfang, was kein Buchstabe ist (Backticks, etc.)
+     * ([a-zA-Z]+)  -> Erfasse den Typ (nur Buchstaben)
+     * (?:\(([^)]+)\))? -> Erfasse den Scope (alles in Klammern)
+     * (!?):?       -> Optionales Breaking-Change Ausrufezeichen und der Doppelpunkt
+     * [\s`]* -> Ignoriere Leerzeichen oder Backticks nach dem Doppelpunkt
+     * (.*?)        -> Der eigentliche Betreff
+     * [\s`]*$      -> Ignoriere Backticks oder Leerzeichen am Ende
+     */
+    exportConfig.parserOpts.headerPattern =
+        /^[^a-zA-Z]*([a-zA-Z]+)(?:\(([^)]+)\))?!?:?[\s`]*(.*?)[`\s]*$/;
+    exportConfig.parserOpts.headerCorrespondence = ["type", "scope", "subject"];
+}
+
 if (exportConfig.writerOpts) {
     exportConfig.writerOpts.commitGroupsSort = (a, b) => {
         const order = [
