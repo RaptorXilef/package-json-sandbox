@@ -2,6 +2,13 @@
 
 
 
+## [0.7.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.6.0...v0.7.0) (2026-04-24)
+
+### 🚀 Features
+
+* **a11y:** add dedicated axe-core script for github actions ([f061f14](https://github.com/RaptorXilef/package-json-sandbox/commit/f061f143c9132177d828236a73abeaaeb8241de8))
+* **tooling:** integrate axe-core cli for dynamic accessibility auditing ([e6cafc9](https://github.com/RaptorXilef/package-json-sandbox/commit/e6cafc957c9f3a99115066ca8c56076ff55656d0))
+
 ## [0.6.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.5.0...v0.6.0) (2026-04-24)
 
 ### 🚀 Features
