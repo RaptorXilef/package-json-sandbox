@@ -1,10 +1,12 @@
-import conventionalChangelogConventionalCommits from "conventional-changelog-conventionalcommits";
+import conventionalCommits from "conventional-changelog-conventionalcommits";
 
 /**
- * Wir nutzen Top-Level Await (verfügbar in Node 25),
- * um die Konfiguration direkt zu exportieren.
+ * @file changelog-config.js
+ * @since 0.1.0
+ * @description Zentrales ESM-Konfigurations-Modul für das Changelog-Format.
  */
-export default await conventionalChangelogConventionalCommits({
+
+const config = await conventionalCommits({
     types: [
         { type: "feat", section: "🚀 Features" },
         { type: "fix", section: "🐛 Bug Fixes" },
@@ -19,3 +21,30 @@ export default await conventionalChangelogConventionalCommits({
         { type: "revert", section: "⏪ Reverts" },
     ],
 });
+
+// Die CLI benötigt direkten Zugriff auf writerOpts und parserOpts
+const exportConfig = config.conventionalChangelog || config;
+
+// Sicherstellen, dass die Sortierung exakt deiner Liste entspricht
+if (exportConfig.writerOpts) {
+    exportConfig.writerOpts.commitGroupsSort = (a, b) => {
+        const order = [
+            "🚀 Features",
+            "🐛 Bug Fixes",
+            "⚡ Performance",
+            "⚙️ Refactoring",
+            "🏗️ Build System",
+            "👷 CI/CD Configuration",
+            "💎 Styling",
+            "🧪 Tests",
+            "📚 Dokumentation",
+            "🧹 Chore / Maintenance",
+            "⏪ Reverts",
+        ];
+        const idxA = order.indexOf(a.title);
+        const idxB = order.indexOf(b.title);
+        return (idxA > -1 ? idxA : 99) - (idxB > -1 ? idxB : 99);
+    };
+}
+
+export default exportConfig;
