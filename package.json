@@ -17,12 +17,14 @@
     "release:rc": "release-it --preRelease=rc",
     "release:patch": "release-it --increment=patch --ci",
     "ci:release:test": "release-it --dry-run --ci",
-    "release:init": "release-it --first-release"
+    "release:init": "release-it --first-release",
+    "changelog:rebuild": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@release-it/conventional-changelog": "^11.0.0",
+    "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "release-it": "^20.0.1"
   },
