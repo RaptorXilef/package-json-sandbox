@@ -7,3 +7,13 @@ esktop
 wcag
 vlucas
 phpdotenv
+valeryanm
+redhat
+phpcbf
+PHPCBF
+Colour
+windir
+Sysnative
+Monokai
+Pirokai
+Behaviour

@@ -26,14 +26,14 @@
         "editor.wordWrapColumn": 120
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
         "editor.formatOnSave": true,
         //"editor.formatOnPaste": true,
         //"editor.formatOnType": true,
         "editor.renderWhitespace": "all"
     },
     "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
         "editor.formatOnSave": true,
         //"editor.formatOnPaste": true,
         //"editor.formatOnType": true,
@@ -44,7 +44,7 @@
         "editor.renderWhitespace": "all"
     },
     "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
         "editor.formatOnSave": true,
         //"editor.formatOnPaste": true,
         //"editor.formatOnType": true,
@@ -55,14 +55,14 @@
         "editor.renderWhitespace": "all"
     },
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
         "editor.formatOnSave": true,
         //"editor.formatOnPaste": true,
         //"editor.formatOnType": true,
         "editor.renderWhitespace": "all"
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.defaultFormatter": "biomejs.biome",
         "editor.formatOnSave": true,
         //"editor.formatOnPaste": true,
         //"editor.formatOnType": true,
@@ -72,6 +72,13 @@
         "editor.defaultFormatter": "redhat.vscode-xml",
         "editor.renderWhitespace": "all"
     },
+    // --- NEU: Ergänzung für HTML (Markuplint) ---
+    "[html]": {
+        "editor.defaultFormatter": "biomejs.biome",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markuplint": "explicit"
+        }
+    },
     // =========================================================================
     // PHP FORMATIERUNG & LINTING (valeryanm.vscode-phpsab)
     // Das Herzstück unserer PHP-PSR-12-Regeln.
@@ -79,20 +86,21 @@
     // Zeigt versteckte und unsichtbare Zeichen
     "gremlins.showInProblemPane": true,
     // Deaktiviert die Intelephense-Formatierung, um Konflikte zu vermeiden. (Wenn false)
-    // Aktuelll aktiviert um die Einrückungen von Kommentareen formatieren zu können
+    // Aktuell aktiviert um die Einrückungen von Kommentare formatieren zu können
     // (Rechtsklick->Dokument formatieren mit ...->PHP Intelephense)
     // Muss möglicherweise in die Globale settings.json übertragen werden
-    "intelephense.format.enable": true,
+    // --- OPTIMIERUNG: Intelephense Formatierung aus, wenn phpsab übernimmt ---
+    "intelephense.format.enable": false,
     // LINTING (Fehler FINDEN mit phpcs)
     "phpsab.snifferEnable": true,
     // WICHTIG: Leer lassen oder auf null setzen, damit er die phpcs.xml.dist im Root findet!
     // Alternativ explizit: "${workspaceFolder}/phpcs.xml.dist"
     "phpsab.standard": "phpcs.xml.dist",
-    "phpsab.executablePathCS": "kga-core/vendor/bin/phpcs.bat",
-    "phpsab.executablePathCBF": "kga-core/vendor/bin/phpcbf.bat",
+    "phpsab.executablePathCS": "${workspaceFolder}/vendor/bin/phpcs.bat",
+    "phpsab.executablePathCBF": "${workspaceFolder}/vendor/bin/phpcbf.bat",
     // WICHTIG: Dynamischer Pfad statt C:\xampp...
     // Alternativ: Absoluter Pfad, da dieser bei dir nachweislich funktioniert
-    //  "phpsab.executablePathCS": "${workspaceFolder}/vendor/bin/phpcs.bat", // Autoerkennung anktiviert
+    //  "phpsab.executablePathCS": "${workspaceFolder}/vendor/bin/phpcs.bat", // Autoerkennung aktiviert
     // FORMATTING (Fehler BEHEBEN mit phpcbf)
     "phpsab.fixerEnable": true, // Deaktiviert, um Konflikte mit PHPCBF zu vermeiden
     "phpsab.fixer": "phpcbf",
@@ -100,19 +108,19 @@
     // PHP-spezifische Ergänzung für den Sniffer
     "phpsab.autoRuleset": false,
     // WICHTIG: Dynamischer Pfad statt C:\xampp...
-    //  "phpsab.executablePathCBF": "${workspaceFolder}/vendor/bin/phpcbf.bat", // Autoerkennung anktiviert
+    //  "phpsab.executablePathCBF": "${workspaceFolder}/vendor/bin/phpcbf.bat", // Autoerkennung aktiviert
     "phpsab.debug": false,
-    // Für phpsab ausgeschlossenee Ordner und Dateien
+    // Für phpsab ausgeschlossene Ordner und Dateien
     "phpsab.snifferArguments": [
         // --ignore wird eigentlich jetzt über phpcs.xml.dist gesteuert,
         // kann hier aber als Fallback bleiben.
-        "--ignore=vendor/*,node_modules/*,.Notizen/*,_Commites/*,.secrets/*,**/.vscode/**"
+        "--ignore=vendor/*,node_modules/*,.Notizen/*,_Commits/*,.secrets/*,**/.vscode/**"
     ],
     // =========================================================================
     // PROJEKT-SPEZIFISCHE EINSTELLUNGEN
     // Regeln, die für alle Teammitglieder gelten sollen.
     // =========================================================================
-    "prettier.prettierPath": "./node_modules/prettier",
+    //"prettier.prettierPath": "./node_modules/prettier",
     // Erzwingt das Anzeigen von Leerzeichen-Veränderungen
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.codeLens": true,
@@ -163,7 +171,7 @@
         "**/.DS_Store": true,
         "**/vendor/": true,
         "**/node_modules/": true,
-        "**/_Commites/": true,
+        "**/_Commits/": true,
         "**/.Notizen/": true,
         // Optional: Cache Dateien ausblenden
         ".phpcs.cache": true,
@@ -180,7 +188,7 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true,
         "**/vendor/*/**": true,
-        "**/_Commites/*/**": true,
+        "**/_Commits/*/**": true,
         "**/.Notizen/*/**": true
     },
     // Optional
