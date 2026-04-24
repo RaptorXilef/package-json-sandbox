@@ -28,7 +28,8 @@ module.exports = {
             ],
         ],
         // Erlaubt Satzanfang-Großschreibung oder komplette Kleinschreibung
-        "subject-case": [2, "always", ["sentence-case", "lower-case"]],
+        // "subject-case": [2, "always", ["sentence-case", "lower-case"]],
+        "subject-case": [0], // Regel deaktiviert, um Eigennamen wie ESLint/Biome zu erlauben
         "subject-empty": [2, "never"],
         "type-empty": [2, "never"],
     },
