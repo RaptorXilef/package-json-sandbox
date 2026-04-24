@@ -6,7 +6,7 @@
 
 ### 🚀 Features
 
-* **stylelint:** integrate stylelint for advanced SCSS validation ([1c13370](https://github.com/RaptorXilef/package-json-sandbox/commit/1c13370132bcdbf844bb0048474892c38bbff3f2))
+- **stylelint:** integrate stylelint for advanced SCSS validation ([1c13370](https://github.com/RaptorXilef/package-json-sandbox/commit/1c13370132bcdbf844bb0048474892c38bbff3f2))
 
 # Changelog
 

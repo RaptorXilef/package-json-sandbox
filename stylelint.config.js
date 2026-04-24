@@ -39,6 +39,7 @@ export default {
                 ],
                 disableFix: true,
                 message:
+                    // biome-ignore lint/suspicious/noTemplateCurlyInString: Stylelint uses this as an internal placeholder
                     "Bitte nutze eine SCSS-Variable für '${property}'. Hartcodierte Werte sind nicht erlaubt.",
             },
         ],
