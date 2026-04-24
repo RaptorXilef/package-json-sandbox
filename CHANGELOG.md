@@ -2,6 +2,16 @@
 
 
 
+## [0.5.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.4.2...v0.5.0) (2026-04-24)
+
+### 🚀 Features
+
+* **tooling:** add markdownlint-cli2 for structural documentation checks ([e08781c](https://github.com/RaptorXilef/package-json-sandbox/commit/e08781cf882099a2bbe039069db545d97c6f41a6))
+
+### ⚙️ Refactoring
+
+* **markdownlint:** consolidate configuration and fix IDE schema validation ([740bb82](https://github.com/RaptorXilef/package-json-sandbox/commit/740bb82f487a5ee48fc84bed93342a6c0b7a2e10))
+
 ## [0.4.2](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.4.1...v0.4.2) (2026-04-24)
 
 ### 🧹 Chore / Maintenance
