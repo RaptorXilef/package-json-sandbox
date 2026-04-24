@@ -6,9 +6,10 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": false,
+    "ignoreUnknown": true,
     "includes": [
       "**",
+      "!!*.md",
       "!!public/assets",
       "!!vendor",
       "!!node_modules",
@@ -31,7 +32,6 @@
   },
   "linter": {
     "enabled": true,
-    "includes": ["**", "!*.md"],
     "rules": {
       "recommended": true,
       "style": {
@@ -58,7 +58,7 @@
   },
   "overrides": [
     {
-      "includes": ["*.json", "*.md", "*.yml"],
+      "includes": ["*.json", "*.yml"],
       "formatter": {
         "indentWidth": 2
       }
