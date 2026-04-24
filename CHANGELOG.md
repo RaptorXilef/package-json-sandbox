@@ -2,6 +2,12 @@
 
 
 
+## [0.8.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.7.0...v0.8.0) (2026-04-24)
+
+### 🚀 Features
+
+* **testing:** replace node-test with vitest for advanced hmr testing ([926e3c2](https://github.com/RaptorXilef/package-json-sandbox/commit/926e3c2a6419a55e430a98ba821a304cea167291))
+
 ## [0.7.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.6.0...v0.7.0) (2026-04-24)
 
 ### 🚀 Features
