@@ -2,6 +2,12 @@
 
 
 
+## [0.3.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.3.0...v0.3.1) (2026-04-24)
+
+### 🧹 Chore / Maintenance
+
+* **release:** finalize automated github release integration ([8034b00](https://github.com/RaptorXilef/package-json-sandbox/commit/8034b0013dd5e457bd3b50031d6e94fa815da8e4))
+
 ## [0.3.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.2.0...v0.3.0) (2026-04-24)
 
 ### 🚀 Features
