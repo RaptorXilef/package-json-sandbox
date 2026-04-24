@@ -1,4 +1,4 @@
-import conventionalCommits from "conventional-changelog-conventionalcommits";
+import conventionalCommits from 'conventional-changelog-conventionalcommits';
 
 /**
  * @file changelog-config.js
@@ -8,17 +8,17 @@ import conventionalCommits from "conventional-changelog-conventionalcommits";
 
 const config = await conventionalCommits({
     types: [
-        { type: "feat", section: "🚀 Features" },
-        { type: "fix", section: "🐛 Bug Fixes" },
-        { type: "perf", section: "⚡ Performance" },
-        { type: "refactor", section: "⚙️ Refactoring" },
-        { type: "build", section: "🏗️ Build System" },
-        { type: "ci", section: "👷 CI/CD Configuration" },
-        { type: "style", section: "💎 Styling" },
-        { type: "test", section: "🧪 Tests" },
-        { type: "docs", section: "📚 Dokumentation" },
-        { type: "chore", section: "🧹 Chore / Maintenance" },
-        { type: "revert", section: "⏪ Reverts" },
+        { type: 'feat', section: '🚀 Features' },
+        { type: 'fix', section: '🐛 Bug Fixes' },
+        { type: 'perf', section: '⚡ Performance' },
+        { type: 'refactor', section: '⚙️ Refactoring' },
+        { type: 'build', section: '🏗️ Build System' },
+        { type: 'ci', section: '👷 CI/CD Configuration' },
+        { type: 'style', section: '💎 Styling' },
+        { type: 'test', section: '🧪 Tests' },
+        { type: 'docs', section: '📚 Dokumentation' },
+        { type: 'chore', section: '🧹 Chore / Maintenance' },
+        { type: 'revert', section: '⏪ Reverts' },
     ],
 });
 
@@ -37,23 +37,23 @@ if (exportConfig.parserOpts) {
      */
     exportConfig.parserOpts.headerPattern =
         /^[^a-zA-Z]*([a-zA-Z]+)(?:\(([^)]+)\))?!?:?[\s`]*(.*?)[`\s]*$/;
-    exportConfig.parserOpts.headerCorrespondence = ["type", "scope", "subject"];
+    exportConfig.parserOpts.headerCorrespondence = ['type', 'scope', 'subject'];
 }
 
 if (exportConfig.writerOpts) {
     exportConfig.writerOpts.commitGroupsSort = (a, b) => {
         const order = [
-            "🚀 Features",
-            "🐛 Bug Fixes",
-            "⚡ Performance",
-            "⚙️ Refactoring",
-            "🏗️ Build System",
-            "👷 CI/CD Configuration",
-            "💎 Styling",
-            "🧪 Tests",
-            "📚 Dokumentation",
-            "🧹 Chore / Maintenance",
-            "⏪ Reverts",
+            '🚀 Features',
+            '🐛 Bug Fixes',
+            '⚡ Performance',
+            '⚙️ Refactoring',
+            '🏗️ Build System',
+            '👷 CI/CD Configuration',
+            '💎 Styling',
+            '🧪 Tests',
+            '📚 Dokumentation',
+            '🧹 Chore / Maintenance',
+            '⏪ Reverts',
         ];
         const idxA = order.indexOf(a.title);
         const idxB = order.indexOf(b.title);

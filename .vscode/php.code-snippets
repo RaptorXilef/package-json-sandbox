@@ -30,8 +30,8 @@
             "${5:interface} ${TM_FILENAME_BASE}",
             "{",
             "    $0",
-            "}",
+            "}"
         ],
-        "description": "Erstellt den projektspezifischen PHP-Header",
-    },
+        "description": "Erstellt den projektspezifischen PHP-Header"
+    }
 }
