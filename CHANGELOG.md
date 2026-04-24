@@ -2,6 +2,12 @@
 
 
 
+## [0.9.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.8.0...v0.9.0) (2026-04-24)
+
+### 🚀 Features
+
+* **assets:** add intelligent image optimization script using sharp ([475a226](https://github.com/RaptorXilef/package-json-sandbox/commit/475a226025eb98bcec973c408192e59907fe60fc))
+
 ## [0.8.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.7.0...v0.8.0) (2026-04-24)
 
 ### 🚀 Features
