@@ -49,6 +49,7 @@
   "scripts": {
     "// --- 0. Collect ---": "",
     "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\"",
+
     "// --- PHASE 0: SETUP & LIFECYCLE ---": "",
     "setup": "@php scripts/Setup.php init",
     "post-install-cmd": "@setup",
@@ -73,6 +74,10 @@
     "// --- ARCHITECTURE ---": "",
     "chk:arch": "deptrac analyse --config-file=deptrac.yaml",
 
+    "// --- MODERNIZATION (RECTOR) ---": "",
+    "chk:modern": "rector process --dry-run",
+    "fix:modern": "rector process",
+
     "// --- PHP QUALITY ASSURANCE ---": "",
     "phpstan": "phpstan analyse --memory-limit=2G",
     "phpstan:baseline": "phpstan analyse --generate-baseline",
@@ -89,12 +94,6 @@
     "// --- MASTER COMMANDS ---": "",
     "chk": ["@qa"],
     "qa": ["@phpstan", "@lint:cpd", "@chk:arch", "@chk:modern", "@test"],
-    "qa:full": ["@qa", "@test:mutation"],
-
-    "// --- MASTER COMMANDS (QUICK ACCESS) ---": "",
-    "//chk": ["@qa"],
-    "//fix": ["@fmt"],
-    "//fmt": ["@fix:modern", "@fix:style"],
-    "//qa": ["@phpstan", "@chk:test", "@chk:modern", "@chk:style"]
+    "qa:full": ["@qa", "@test:mutation"]
   }
 }
