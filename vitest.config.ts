@@ -8,11 +8,15 @@ export default defineConfig({
         // Wir nutzen jsdom, um eine Browser-Umgebung für JS/UI-Tests zu simulieren
         environment: 'jsdom',
         include: ['**/*.{test,spec}.{js,ts}'],
-        reporters: ['default', 'html'], // 'html' erstellt einen schicken Report in /html
+
+        // PFAD-FIX: Hier bändigen wir den HTML-Reporter
+        reporters: ['default', ['html', { outputFile: './.build/reports/vitest/index.html' }]],
+
         coverage: {
             provider: 'v8', // Nutzt die V8-Engine für schnelle Coverage-Reports
             reporter: ['text', 'json', 'html'],
-            reportsDirectory: './.build/reports/vitest-coverage', // Wir halten unsere Reports zentral!
+            // Auch die Coverage-Reports wandern in den zentralen Build-Ordner
+            reportsDirectory: './.build/reports/vitest-coverage',
         },
     },
 });

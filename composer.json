@@ -62,8 +62,8 @@
 
     "// --- PHASE 0: SETUP & LIFECYCLE ---": "",
     "setup": "@php scripts/Setup.php init",
-    "post-install-cmd": "@setup",
-    "post-update-cmd": "@setup",
+    "//post-install-cmd": "@setup",
+    "//post-update-cmd": "@setup",
     "post-autoload-dump": "@setup",
     "clear": "@php scripts/Setup.php clear",
 
