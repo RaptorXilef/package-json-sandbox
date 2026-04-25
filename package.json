@@ -96,7 +96,7 @@
     "not dead"
   ],
   "lint-staged": {
-    "// *.php": [
+    "*.php": [
       "vendor/bin/phpcs",
       "vendor/bin/phpstan analyze"
     ],
