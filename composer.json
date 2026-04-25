@@ -54,6 +54,7 @@
     "clear": "@php scripts/Setup.php clear",
 
     "// --- TESTING ---": "",
+    "test:mutation": "php -d xdebug.mode=coverage tools/infection.phar --threads=4 --min-msi=30 --coverage=.cache/phpunit",
     "test": "phpunit",
     "test:unit": "phpunit --testsuite Unit",
     "test:feature": "phpunit --testsuite Feature",
@@ -62,11 +63,16 @@
     "// --- PHP QUALITY ASSURANCE ---": "",
     "phpstan": "phpstan analyse --memory-limit=2G",
     "phpstan:baseline": "phpstan analyse --generate-baseline",
-    "qa": ["@phpstan", "@test"],
+    "lint:cpd": "php tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
 
     "// --- CI / AUTOMATION ---": "",
     "ci:phpstan": "phpstan analyse --error-format=checkstyle --no-progress > .build/reports/phpstan.xml || true",
     "mkdir:reports": "@php -r \"is_dir('.build/reports') || mkdir('.build/reports', 0777, true);\"",
+
+    "// --- MASTER COMMANDS ---": "",
+    "chk": ["@qa"],
+    "qa": ["@phpstan", "@lint:cpd", "@test"],
+    "qa:full": ["@qa", "@test:mutation"],
 
     "// --- MASTER COMMANDS (QUICK ACCESS) ---": "",
     "//chk": ["@qa"],

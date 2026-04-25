@@ -26,9 +26,25 @@ class Setup
 
     public static function init(): void
     {
+        self::initEnv(); // NEU: .env Handling
         self::createDirectories();
         self::updateTools();
         echo "\n✅ Setup erfolgreich abgeschlossen.\n";
+    }
+
+    private static function initEnv(): void
+    {
+        echo "📄 Prüfe .env Datei...\n";
+        if (!file_exists('.env')) {
+            if (file_exists('.env.example')) {
+                copy('.env.example', '.env');
+                echo "   [OK] .env aus .env.example erstellt.\n";
+            } else {
+                echo "   [HINWEIS] Keine .env.example gefunden. Bitte .env manuell erstellen.\n";
+            }
+        } else {
+            echo "   [INFO] .env existiert bereits.\n";
+        }
     }
 
     public static function createDirectories(): void
@@ -78,6 +94,7 @@ class Setup
 }
 
 // Direkter Aufruf durch Composer
+// CLI Entry Point
 if (php_sapi_name() === 'cli' && isset($argv[1])) {
     $action = $argv[1];
 
