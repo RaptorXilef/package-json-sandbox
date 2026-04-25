@@ -17,7 +17,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 try {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
     $dotenv->safeLoad();
-} catch (Exception $e) {
+} catch (Exception) {
     // Falls die .env fehlt, nutzen wir Fallbacks (siehe unten)
 }
 
@@ -29,19 +29,19 @@ $viteHost = $_ENV['VITE_HOST'] ?? 'http://127.0.0.1:5173';
  * Hilfsfunktion für Bilder und statische Assets
  * Sorgt dafür, dass Pfade in Dev (Vite) und Prod (Dist) stimmen.
  */
-function asset($path) {
+function asset($path): string {
     global $isDev, $viteHost;
 
     if ($isDev) {
         // Im Dev-Modus: Direkt vom Vite-Server (src-Ordner)
-        return $viteHost . '/src/' . ltrim($path, '/');
+        return $viteHost . '/src/' . ltrim((string) $path, '/');
     }
 
     // Im Produktions-Modus: Aus dem Manifest lesen
     $manifestPath = __DIR__ . '/dist/.vite/manifest.json';
     if (file_exists($manifestPath)) {
         $manifest = json_decode(file_get_contents($manifestPath), true);
-        $sourcePath = 'src/' . ltrim($path, '/');
+        $sourcePath = 'src/' . ltrim((string) $path, '/');
 
         if (isset($manifest[$sourcePath])) {
             return 'dist/' . $manifest[$sourcePath]['file'];
@@ -49,13 +49,13 @@ function asset($path) {
     }
 
     // Fallback falls Manifest fehlt oder Datei nicht gefunden wurde
-    return 'dist/' . ltrim($path, '/');
+    return 'dist/' . ltrim((string) $path, '/');
 }
 
 /**
  * Hauptfunktion zum Laden der JS/SCSS Einstiegspunkte
  */
-function vite_assets($entry = 'main') {
+function vite_assets($entry = 'main'): string {
     global $isDev, $viteHost;
 
     if ($isDev) {
