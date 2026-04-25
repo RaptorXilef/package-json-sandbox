@@ -4,6 +4,7 @@ buildpath
 Colour
 ehthumbs
 esktop
+issets
 mockst
 Monokai
 nbproject
@@ -16,6 +17,7 @@ redhat
 stackdump
 Sysnative
 testsuites
+unsets
 valeryanm
 Versionierung
 vlucas

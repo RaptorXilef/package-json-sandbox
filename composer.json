@@ -12,7 +12,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=8.3",
+    "php": ">=8.4",
     "ext-zip": "*",
     "ext-mbstring": "*",
     "vlucas/phpdotenv": "^5.6"
@@ -25,7 +25,9 @@
     "phpunit/phpunit": "^12.5",
     "pestphp/pest": "^4.6",
     "rector/rector": "^2.4",
-    "deptrac/deptrac": "^4.6"
+    "deptrac/deptrac": "^4.6",
+    "friendsofphp/php-cs-fixer": "^3.95",
+    "kubawerlos/php-cs-fixer-custom-fixers": "^3.37"
   },
   "autoload": {
     "psr-4": {
@@ -74,6 +76,10 @@
     "// --- ARCHITECTURE ---": "",
     "chk:arch": "deptrac analyse --config-file=deptrac.yaml",
 
+    "// --- PHASE : STYLE (PHP-CS-FIXER) ---": "",
+    "chk:style": "php-cs-fixer fix --dry-run --diff --no-interaction",
+    "fix:style": "php-cs-fixer fix --allow-risky=yes",
+
     "// --- MODERNIZATION (RECTOR) ---": "",
     "chk:modern": "rector process --dry-run",
     "fix:modern": "rector process",
@@ -93,7 +99,8 @@
 
     "// --- MASTER COMMANDS ---": "",
     "chk": ["@qa"],
-    "qa": ["@phpstan", "@lint:cpd", "@chk:arch", "@chk:modern", "@test"],
+    "fmt": ["@fix:modern", "@fix:style"],
+    "qa": ["@phpstan", "@lint:cpd", "@chk:arch", "@chk:modern", "@chk:style", "@test"],
     "qa:full": ["@qa", "@test:mutation"]
   }
 }

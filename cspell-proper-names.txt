@@ -22,6 +22,7 @@ javascriptsnippets
 kainiklas
 karlito
 kohler
+kubawerlos
 lakshits
 lighthouseci
 markuplint
@@ -56,3 +57,4 @@ usernamehw
 usernamehw
 xabikos
 xampp
+yoda
