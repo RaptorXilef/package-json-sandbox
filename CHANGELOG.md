@@ -2,6 +2,12 @@
 
 
 
+## [0.21.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.20.0...v0.21.0) (2026-04-25)
+
+### 🚀 Features
+
+* **vitest:** implement snapshot testing for UI components ([d5214b3](https://github.com/RaptorXilef/package-json-sandbox/commit/d5214b327568dffd60d3fa9fc5b11789943ce7b1))
+
 ## [0.20.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.19.0...v0.20.0) (2026-04-25)
 
 ### 🚀 Features
