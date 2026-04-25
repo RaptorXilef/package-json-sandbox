@@ -38,7 +38,7 @@ return static function (RectorConfig $rectorConfig): void {
     // 2. Regel-Sets für High-End Qualität
     $rectorConfig->sets([
         // Aktualisiert Code auf PHP 8.3/8.4 Standard (Attributes, Readonly, etc.)
-        LevelSetList::UP_TO_PHP_84,           // Volle PHP 8.4 Power
+        LevelSetList::UP_TO_PHP_83,           // Volle PHP 8.4 Power
         SetList::DEAD_CODE,                   // Entfernt unnötigen Ballast
         SetList::CODE_QUALITY,                // Schreibt sauberen Code
         SetList::TYPE_DECLARATION,            // Maximale Typsicherheit (hilft PHPStan Level max)

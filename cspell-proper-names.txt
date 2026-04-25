@@ -4,6 +4,7 @@ bmewburn
 bmewburn
 breadnaught
 ceintl
+codesniffer
 commitlint
 davidanson
 dealerdirect
@@ -39,8 +40,12 @@ nobuhito
 oderwat
 pestphp
 phpcodesniffer
+phpcompatibility
 phpcpd
 phpcs
+phpcsextra
+phpcsstandards
+phpcsutils
 phpsab
 phpstan
 phpunit
@@ -48,8 +53,10 @@ pirokai
 printcode
 qossmic
 recca
+slevomat
 solnurkarim
 sqlite
+squizlabs
 stkb
 stylelint
 tomoki

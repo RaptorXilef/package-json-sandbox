@@ -16,7 +16,7 @@ use App\Tests\TestCase;
 */
 
 // Bindet deine TestCase-Klasse an alle Feature-Tests
-pest()->extend(TestCase::class)->in('Feature');
+\pest()->extend(TestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ pest()->extend(TestCase::class)->in('Feature');
 */
 
 // Hier kann ich eigene Erwartungen (Expectations) definieren
-expect()->extend('toBeOne', fn() => $this->toBe(1));
+\expect()->extend('toBeOne', fn () => $this->toBe(1));
 
 /*
 |--------------------------------------------------------------------------
