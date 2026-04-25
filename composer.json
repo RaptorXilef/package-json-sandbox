@@ -25,7 +25,7 @@
     "phpunit/phpunit": "^12.5",
     "pestphp/pest": "^4.6",
     "rector/rector": "^2.4",
-    "qossmic/deptrac": "^2.0"
+    "deptrac/deptrac": "^4.6"
   },
   "autoload": {
     "psr-4": {
