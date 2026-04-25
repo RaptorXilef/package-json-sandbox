@@ -24,7 +24,8 @@
     "phpstan/phpstan-phpunit": "^2.0",
     "phpunit/phpunit": "^12.5",
     "pestphp/pest": "^4.6",
-    "qossmic/deptrac-shim": "^1.0"
+    "qossmic/deptrac-shim": "^1.0",
+    "rector/rector": "^2.4"
   },
   "autoload": {
     "psr-4": {
@@ -65,7 +66,6 @@
     "test": "pest --parallel",
     "test:full": "pest --parallel --display-deprecations",
     "test:coverage": "XDEBUG_MODE=coverage pest --coverage --coverage-html .build/reports/phpunit-html",
-    "ci:test": "pest --ci --log-junit .build/reports/junit.xml",
 
     "// --- TESTING (Mutation) ---": "",
     "test:mutation": "php -d xdebug.mode=coverage tools/infection.phar --threads=4 --min-msi=30 --coverage=.cache/phpunit",
@@ -79,12 +79,16 @@
     "lint:cpd": "php tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
 
     "// --- CI / AUTOMATION ---": "",
-    "ci:phpstan": "phpstan analyse --error-format=checkstyle --no-progress > .build/reports/phpstan.xml || true",
     "mkdir:reports": "@php -r \"is_dir('.build/reports') || mkdir('.build/reports', 0777, true);\"",
+    "ci:phpstan": [
+      "@mkdir:reports",
+      "phpstan analyse --error-format=checkstyle --no-progress > .build/reports/phpstan.xml || true"
+    ],
+    "ci:test": ["@mkdir:reports", "pest --ci --log-junit .build/reports/junit.xml"],
 
     "// --- MASTER COMMANDS ---": "",
     "chk": ["@qa"],
-    "qa": ["@phpstan", "@lint:cpd", "@chk:arch", "@test"],
+    "qa": ["@phpstan", "@lint:cpd", "@chk:arch", "@chk:modern", "@test"],
     "qa:full": ["@qa", "@test:mutation"],
 
     "// --- MASTER COMMANDS (QUICK ACCESS) ---": "",
