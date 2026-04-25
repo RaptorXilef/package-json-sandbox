@@ -7,6 +7,7 @@ ceintl
 commitlint
 davidanson
 dealerdirect
+deptrac
 docblocker
 eamodio
 eriklynd
@@ -44,6 +45,7 @@ phpstan
 phpunit
 pirokai
 printcode
+qossmic
 recca
 solnurkarim
 sqlite

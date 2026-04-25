@@ -22,7 +22,9 @@
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan-strict-rules": "^2.0",
     "phpstan/phpstan-phpunit": "^2.0",
-    "phpunit/phpunit": "^12.5"
+    "phpunit/phpunit": "^12.5",
+    "pestphp/pest": "^4.6",
+    "qossmic/deptrac-shim": "^1.0"
   },
   "autoload": {
     "psr-4": {
@@ -53,12 +55,23 @@
     "post-autoload-dump": "@setup",
     "clear": "@php scripts/Setup.php clear",
 
-    "// --- TESTING ---": "",
+    "// --- TESTING (UNIT) ---": "",
+    "//test": "phpunit",
+    "//test:unit": "phpunit --testsuite Unit",
+    "//test:feature": "phpunit --testsuite Feature",
+    "//test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .build/reports/phpunit-html",
+
+    "// --- TESTING (PEST) ---": "",
+    "test": "pest --parallel",
+    "test:full": "pest --parallel --display-deprecations",
+    "test:coverage": "XDEBUG_MODE=coverage pest --coverage --coverage-html .build/reports/phpunit-html",
+    "ci:test": "pest --ci --log-junit .build/reports/junit.xml",
+
+    "// --- TESTING (Mutation) ---": "",
     "test:mutation": "php -d xdebug.mode=coverage tools/infection.phar --threads=4 --min-msi=30 --coverage=.cache/phpunit",
-    "test": "phpunit",
-    "test:unit": "phpunit --testsuite Unit",
-    "test:feature": "phpunit --testsuite Feature",
-    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .build/reports/phpunit-html",
+
+    "// --- ARCHITECTURE ---": "",
+    "chk:arch": "deptrac analyse --config-file=deptrac.yaml",
 
     "// --- PHP QUALITY ASSURANCE ---": "",
     "phpstan": "phpstan analyse --memory-limit=2G",
@@ -71,7 +84,7 @@
 
     "// --- MASTER COMMANDS ---": "",
     "chk": ["@qa"],
-    "qa": ["@phpstan", "@lint:cpd", "@test"],
+    "qa": ["@phpstan", "@lint:cpd", "@chk:arch", "@test"],
     "qa:full": ["@qa", "@test:mutation"],
 
     "// --- MASTER COMMANDS (QUICK ACCESS) ---": "",
