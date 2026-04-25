@@ -2,6 +2,12 @@
 
 
 
+## [0.22.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.21.0...v0.22.0) (2026-04-25)
+
+### 🚀 Features
+
+* **workflow:** implement interactive pre-commit hook ([42938b0](https://github.com/RaptorXilef/package-json-sandbox/commit/42938b0a34daa5328dcd5be122d556ed392cdef4))
+
 ## [0.21.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.20.0...v0.21.0) (2026-04-25)
 
 ### 🚀 Features
