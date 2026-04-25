@@ -2,6 +2,12 @@
 
 
 
+## [0.23.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.22.0...v0.23.0) (2026-04-25)
+
+### 🚀 Features
+
+* **workflow:** integrate PHP checks into lint-staged and refine hook ([791f6f9](https://github.com/RaptorXilef/package-json-sandbox/commit/791f6f9767b14313839ace8c68cad167fadaf921))
+
 ## [0.22.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.21.0...v0.22.0) (2026-04-25)
 
 ### 🚀 Features
