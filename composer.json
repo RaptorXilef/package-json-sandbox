@@ -124,15 +124,16 @@
 
     "// --- MASTER COMMANDS ---": "",
     "chk": ["@qa"],
+    "fix": ["@fmt", "@fix:cs"],
     "fmt": ["@fix:modern", "@fix:style"],
     "qa": [
-      "@phpstan",
-      "@lint:cpd",
+      "@chk:style",
       "@chk:cs",
       "@chk:md",
+      "@lint:cpd",
       "@chk:arch",
       "@chk:modern",
-      "@chk:style",
+      "@phpstan",
       "@test"
     ],
     "qa:full": ["@qa", "@test:mutation"]
