@@ -53,3 +53,9 @@ parameters:
     # Dies verhindert, dass PHPStan denkt, er wüsste es besser als die Laufzeit,
     # wenn es um native Funktionen geht, die false liefern können.
     treatPhpDocTypesAsCertain: false
+
+    ignoreErrors:
+        # Pest nutzt interne Methoden für seine API, das ist beabsichtigt.
+        -
+            message: '#Call to method .* of internal class Pest\\.* from outside its root namespace Pest#'
+            path: tests/*

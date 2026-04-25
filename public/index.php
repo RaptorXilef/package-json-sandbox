@@ -27,21 +27,20 @@ $viteHost = $_ENV['VITE_HOST'] ?? 'http://127.0.0.1:5173';
 
 /**
  * Hilfsfunktion für Bilder und statische Assets
- * Sorgt dafür, dass Pfade in Dev (Vite) und Prod (Dist) stimmen.
  */
-function asset($path): string {
+function asset(string $path): string { // TYP HINZUGEFÜGT
     global $isDev, $viteHost;
 
-    if ($isDev) {
-        // Im Dev-Modus: Direkt vom Vite-Server (src-Ordner)
-        return $viteHost . '/src/' . ltrim((string) $path, '/');
+// Im Dev-Modus: Direkt vom Vite-Server (src-Ordner)
+    if ((bool)$isDev) { // CAST ZU BOOL FÜR PHPSTAN
+        return $viteHost . '/src/' . ltrim($path, '/');
     }
 
     // Im Produktions-Modus: Aus dem Manifest lesen
     $manifestPath = __DIR__ . '/dist/.vite/manifest.json';
     if (file_exists($manifestPath)) {
-        $manifest = json_decode(file_get_contents($manifestPath), true);
-        $sourcePath = 'src/' . ltrim((string) $path, '/');
+        $manifest = (array)json_decode((string)file_get_contents($manifestPath), true);
+        $sourcePath = 'src/' . ltrim($path, '/');
 
         if (isset($manifest[$sourcePath])) {
             return 'dist/' . $manifest[$sourcePath]['file'];
@@ -49,16 +48,16 @@ function asset($path): string {
     }
 
     // Fallback falls Manifest fehlt oder Datei nicht gefunden wurde
-    return 'dist/' . ltrim((string) $path, '/');
+    return 'dist/' . ltrim($path, '/');
 }
 
 /**
  * Hauptfunktion zum Laden der JS/SCSS Einstiegspunkte
  */
-function vite_assets($entry = 'main'): string {
+function vite_assets(string $entry = 'main'): string {
     global $isDev, $viteHost;
 
-    if ($isDev) {
+    if ((bool)$isDev) { // CAST ZU BOOL
         return '
             <script type="module" src="' . $viteHost . '/@vite/client"></script>
             <script type="module" src="' . $viteHost . '/src/js/main.js"></script>
@@ -71,14 +70,17 @@ function vite_assets($entry = 'main'): string {
         return '';
     }
 
-    $manifest = json_decode(file_get_contents($manifestPath), true);
+    // CAST ZU ARRAY: Damit PHPStan weiß, was $manifest ist
+    $manifest = (array)json_decode((string)file_get_contents($manifestPath), true);
 
     // Wir nutzen hier die Keys, die wir in der vite.config.js definiert haben
-    $jsFile = $manifest['src/js/main.js']['file'] ?? '';
+    $jsFile = (string)($manifest['src/js/main.js']['file'] ?? '');
     $cssFile = $manifest['src/scss/main.scss']['file'] ?? null;
 
     $html = '<script type="module" src="dist/' . $jsFile . '"></script>';
-    if ($cssFile) {
+
+    // PRÄZISE ABFRAGE: Nicht nur if($cssFile), sondern Vergleich auf null
+    if ($cssFile !== null) {
         $html .= '<link rel="stylesheet" href="dist/' . $cssFile . '">';
     }
 

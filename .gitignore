@@ -106,6 +106,8 @@ ehthumbs_vista.db
 
 .lighthouseci/*
 
+.deptrac.cache
+
 # Code Coverage Reports
 /coverage/
 /html-coverage/
