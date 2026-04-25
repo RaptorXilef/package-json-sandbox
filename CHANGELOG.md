@@ -2,6 +2,13 @@
 
 
 
+## [0.15.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.0...v0.15.1) (2026-04-25)
+
+### 🧹 Chore / Maintenance
+
+* **deps:** migrate deptrac to official organization namespace ([7df1bb9](https://github.com/RaptorXilef/package-json-sandbox/commit/7df1bb9c1e179172e2aa66a77b76b56b93dc9f36))
+* **deps:** replace abandoned deptrac-shim with official deptrac package ([f93288d](https://github.com/RaptorXilef/package-json-sandbox/commit/f93288d63f9bdec7ad30d7694d20537e53ad5cae))
+
 ## [0.15.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.14.1...v0.15.0) (2026-04-25)
 
 ### 🚀 Features
