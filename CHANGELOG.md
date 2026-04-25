@@ -2,6 +2,16 @@
 
 
 
+## [0.19.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.18.0...v0.19.0) (2026-04-25)
+
+### 🚀 Features
+
+* **core:** add HTMLPurifier for security and configure Vitest with jsdom ([2d9b81e](https://github.com/RaptorXilef/package-json-sandbox/commit/2d9b81e753578686386e243da1865934c8fa92c2))
+
+### 🧹 Chore / Maintenance
+
+* optimize script execution order and naming conventions ([df100e5](https://github.com/RaptorXilef/package-json-sandbox/commit/df100e5f682c42ae9f2d668a728a3525947ce98c))
+
 ## [0.18.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.17.0...v0.18.0) (2026-04-25)
 
 ### 🚀 Features
