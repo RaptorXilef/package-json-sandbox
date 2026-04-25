@@ -1,6 +1,6 @@
 {
   "name": "@raptorxilef/package-json-sandbox",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "Testumgebung meiner NPM/package.json Einstellungen",
   "type": "module",
   "author": "Felix Maywald",

@@ -2,6 +2,12 @@
 
 
 
+## [0.17.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.16.0...v0.17.0) (2026-04-25)
+
+### 🚀 Features
+
+* **qa:** integrate PHPCS with Slevomat and optimize environment compatibility ([606287a](https://github.com/RaptorXilef/package-json-sandbox/commit/606287a1793c2932ad11cbe0f8da28742313bbc4))
+
 ## [0.16.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.3...v0.16.0) (2026-04-25)
 
 ### 🚀 Features
