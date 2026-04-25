@@ -2,6 +2,8 @@
 
 use App\Example;
 
+covers(Example::class);
+
 test('it can add two numbers', function () {
     $example = new Example();
 
