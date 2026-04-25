@@ -13,10 +13,12 @@ docblocker
 eamodio
 eriklynd
 errorlens
+ezyang
 faelv
 formulahendry
 gruntfuggly
 htmlhint
+htmlpurifier
 intelephense
 janisdd
 javascriptsnippets
