@@ -1,6 +1,6 @@
 {
   "name": "@raptorxilef/package-json-sandbox",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Testumgebung meiner NPM/package.json Einstellungen",
   "type": "module",
   "author": "Felix Maywald",
@@ -18,14 +18,12 @@
     "images:optimize": "node scripts/optimize-images.js",
     "preview": "vite preview",
     "prepare": "husky",
-
     "// --- 2. TESTING ---": "Unit-Tests und Test-Runner",
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "node_test": "node --test",
-
     "// --- 3. LINTING & FIXING ---": "Statische Code-Analyse",
     "lint:all": "npm run biome:check && npm run lint:css && npm run lint:spell && npm run lint:md",
     "biome:check": "biome check --write .",
@@ -36,15 +34,12 @@
     "lint:css:fix": "stylelint \"**/*.scss\" --fix",
     "lint:spell": "cspell lint \"**\" --no-progress --show-suggestions",
     "lint:md": "markdownlint-cli2",
-
     "// --- 4. ACCESSIBILITY (A11Y) ---": "Barrierefreiheits-Checks",
     "lint:a11y": "axe public/index.html",
     "lint:a11y:url": "axe http://localhost/package-json-sandbox",
     "ci:lint:a11y": "axe --ci --tags wcag2a,wcag2aa http://localhost:3000",
-
     "// --- 5. BUILD ---": "Erstellung der Produktions-Assets",
     "build": "vite build",
-
     "// --- 6. RELEASE-MANAGEMENT ---": "Versionierung und Changelogs",
     "release": "release-it",
     "release:alpha": "release-it --preRelease=alpha",

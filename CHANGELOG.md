@@ -2,6 +2,21 @@
 
 
 
+## [0.12.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.11.0...v0.12.0) (2026-04-25)
+
+### 🚀 Features
+
+* **php:** implement lifecycle setup script and phpunit integration ([c2a717c](https://github.com/RaptorXilef/package-json-sandbox/commit/c2a717ccd8cb0b8a8b87db6ae70a04e0c8a712af))
+* **php:** integrate phpstan for high-end static analysis ([27379c1](https://github.com/RaptorXilef/package-json-sandbox/commit/27379c1ca431ebe968a91ee44f44bede2e6d5aa5))
+
+### ⚙️ Refactoring
+
+* **setup:** migrate env logic to Setup script and add QA tools ([c84a3c6](https://github.com/RaptorXilef/package-json-sandbox/commit/c84a3c6de2d00c040b281afed44c5e60f819fa7d))
+
+### 🧹 Chore / Maintenance
+
+* **dx:** reorganize npm scripts into logical lifecycle blocks ([d88f345](https://github.com/RaptorXilef/package-json-sandbox/commit/d88f3456f7fbe109e1a771a479e0154dc1a45102))
+
 ## [0.11.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.10.0...v0.11.0) (2026-04-24)
 
 ### 🚀 Features
