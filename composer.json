@@ -33,7 +33,8 @@
     "phpunit/phpunit": "^12.5",
     "rector/rector": "^2.4",
     "slevomat/coding-standard": "^8.28",
-    "squizlabs/php_codesniffer": "^4.0"
+    "squizlabs/php_codesniffer": "^4.0",
+    "phpmd/phpmd": "^3.0"
   },
   "autoload": {
     "psr-4": {
@@ -98,6 +99,7 @@
     "phpstan": "phpstan analyse --memory-limit=2G",
     "phpstan:baseline": "phpstan analyse --generate-baseline",
     "lint:cpd": "php tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
+    "chk:md": "phpmd analyze src --format text --ruleset phpmd.xml.dist",
 
     "// --- CI / AUTOMATION ---": "",
     "mkdir:reports": "@php -r \"is_dir('.build/reports') || mkdir('.build/reports', 0777, true);\"",
@@ -110,6 +112,10 @@
       "@mkdir:reports",
       "phpcs --report=checkstyle --report-file=.build/reports/phpcs.xml || true"
     ],
+    "ci:md": [
+      "@mkdir:reports",
+      "phpmd analyze src --format xml --ruleset phpmd.xml.dist --reportfile-xml .build/reports/phpmd.xml || true"
+    ],
 
     "// --- PHASE : MAINTENANCE & UTILS ---": "",
     "util:up": "@php scripts/Setup.php up",
@@ -119,7 +125,16 @@
     "// --- MASTER COMMANDS ---": "",
     "chk": ["@qa"],
     "fmt": ["@fix:modern", "@fix:style"],
-    "qa": ["@phpstan", "@lint:cpd", "@chk:cs", "@chk:arch", "@chk:modern", "@chk:style", "@test"],
+    "qa": [
+      "@phpstan",
+      "@lint:cpd",
+      "@chk:cs",
+      "@chk:md",
+      "@chk:arch",
+      "@chk:modern",
+      "@chk:style",
+      "@test"
+    ],
     "qa:full": ["@qa", "@test:mutation"]
   }
 }

@@ -2,10 +2,13 @@ Barrierefreiheits
 basepath
 Behaviour
 buildpath
+cleancode
+codesize
 Colour
 ehthumbs
 esktop
 issets
+maxmethods
 mockst
 Monokai
 nbproject
@@ -15,10 +18,12 @@ PHPCBF
 phpdotenv
 Pirokai
 redhat
+reportfile
 stackdump
 Sysnative
 testsuites
 unsets
+unusedcode
 valeryanm
 Versionierung
 vlucas

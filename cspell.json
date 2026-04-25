@@ -61,6 +61,7 @@
     "CHANGELOG.md",
     "package-lock.json",
     ".gitignore",
-    "*.min.*"
+    "*.min.*",
+    "tools/**"
   ]
 }
