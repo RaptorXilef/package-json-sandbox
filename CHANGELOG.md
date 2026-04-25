@@ -2,6 +2,13 @@
 
 
 
+## [0.20.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.19.0...v0.20.0) (2026-04-25)
+
+### 🚀 Features
+
+* **vitest:** enable global SCSS variable injection in tests ([b68542d](https://github.com/RaptorXilef/package-json-sandbox/commit/b68542d9dc0a1684c5e81bdddc4d36cf9bb65733))
+* **vitest:** migrate to typescript config and add first DOM test ([ce551ca](https://github.com/RaptorXilef/package-json-sandbox/commit/ce551cabe72211fbb017f8983fb682279f579449))
+
 ## [0.19.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.18.0...v0.19.0) (2026-04-25)
 
 ### 🚀 Features
