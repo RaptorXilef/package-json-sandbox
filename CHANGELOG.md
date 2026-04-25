@@ -2,6 +2,20 @@
 
 
 
+## [0.15.3](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.2...v0.15.3) (2026-04-25)
+
+### 🐛 Bug Fixes
+
+* **qa:** resolve PHPStan level 6 type hints and pest internal errors ([699d4ce](https://github.com/RaptorXilef/package-json-sandbox/commit/699d4ce5ec340bed455bee5527d353672af81ea7))
+
+### ⚙️ Refactoring
+
+* apply automated rector modernization and type-safety fixes ([0de7908](https://github.com/RaptorXilef/package-json-sandbox/commit/0de790866331ea49bec8d5e5ba21caec77a644ae))
+
+### 🧹 Chore / Maintenance
+
+* **conf:** finalize environment with xdebug and clean gitignore ([10c9dda](https://github.com/RaptorXilef/package-json-sandbox/commit/10c9ddabdaecc696a658f185f5d2c9b9ac4f1cc5))
+
 ## [0.15.2](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.1...v0.15.2) (2026-04-25)
 
 ### 🧹 Chore / Maintenance
