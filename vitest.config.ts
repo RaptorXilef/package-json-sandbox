@@ -19,4 +19,14 @@ export default defineConfig({
             reportsDirectory: './.build/reports/vitest-coverage',
         },
     },
+    // VITE-LOGIK: Hier bringen wir Vitest SCSS bei
+    css: {
+        preprocessorOptions: {
+            scss: {
+                // Hier gibst du den Pfad zu deiner globalen Variablen-Datei an
+                // So sind $primary-color etc. in jedem Test/Komponente verfügbar
+                additionalData: `@use "src/scss/abstracts/_variables.scss" as *;`,
+            },
+        },
+    },
 });
