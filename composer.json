@@ -1,5 +1,68 @@
 {
+  "name": "raptorxilef/package-json-sandbox",
+  "description": "Testumgebung meiner NPM/package.json Einstellungen",
+  "type": "project",
+  "license": "CC-BY-NC-SA-4.0",
+  "authors": [
+    {
+      "name": "Felix Maywald",
+      "email": "31962607+RaptorXilef@users.noreply.github.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
+    "php": ">=8.3",
+    "ext-zip": "*",
+    "ext-mbstring": "*",
     "vlucas/phpdotenv": "^5.6"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1",
+    "phpstan/extension-installer": "^1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "vendor-dir": "vendor/",
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true,
+      "pestphp/pest-plugin": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "// --- PHP QUALITY ASSURANCE ---": "",
+    "phpstan": "phpstan analyse --memory-limit=2G",
+    "phpstan:baseline": "phpstan analyse --generate-baseline",
+
+    "// --- CI / AUTOMATION ---": "",
+    "ci:phpstan": "phpstan analyse --error-format=checkstyle --no-progress > .build/reports/phpstan.xml || true",
+    "mkdir:reports": "@php -r \"is_dir('.build/reports') || mkdir('.build/reports', 0777, true);\"",
+
+    "// --- LIFECYCLE ---": "",
+    "post-install-cmd": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+
+    "// --- PHASE 0: SETUP & LIFECYCLE ---": "",
+    "setup": "@php scripts/Setup.php init",
+    "//post-install-cmd": "@setup",
+    "post-update-cmd": "@setup",
+    "post-autoload-dump": "@setup",
+    "// --- MASTER COMMANDS (QUICK ACCESS) ---": "",
+    "chk": ["@qa"],
+    "fix": ["@fmt"],
+    "fmt": ["@fix:modern", "@fix:style"],
+    "qa": ["@phpstan", "@chk:test", "@chk:modern", "@chk:style"],
+    "// --- 0. Collect ---": "",
+    "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\""
   }
 }

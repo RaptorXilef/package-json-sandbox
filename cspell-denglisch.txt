@@ -3,3 +3,5 @@ committen
 versioniert
 versionieren
 Minifizierte
+autoloader
+analyse

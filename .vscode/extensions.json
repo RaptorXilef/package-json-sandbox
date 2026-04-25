@@ -12,7 +12,6 @@
         "yo1dog.cursor-align",
         "janisdd.vscode-edit-csv",
         "usernamehw.errorlens",
-        "dbaeumer.vscode-eslint",
         "mikebovenlander.formate",
         "streetsidesoftware.code-spell-checker-german",
         "ms-ceintl.vscode-language-pack-de",
@@ -31,7 +30,6 @@
         "xdebug.php-debug",
         "recca0120.vscode-phpunit",
         "ms-vscode.powershell",
-        "esbenp.prettier-vscode",
         "nobuhito.printcode",
         "mechatroner.rainbow-csv",
         "stylelint.vscode-stylelint",
@@ -51,7 +49,8 @@
         "bmewburn.vscode-intelephense-client",
         "usernamehw.todo-md",
         "ldd-vs-code.better-package-json",
-        "stkb.rewrap"
+        "stkb.rewrap",
+        "biomejs.biome"
     ],
     // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
     "unwantedRecommendations": []

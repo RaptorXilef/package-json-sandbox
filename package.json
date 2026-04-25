@@ -10,6 +10,9 @@
     "npm": ">=11.11.0"
   },
   "scripts": {
+    "// --- 0:.Collect ---": "",
+    "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\"",
+    "collect-info": "pwsh.exe -Command \"Get-Location; Get-ChildItem scripts\"",
     "// --- 1. DEVELOPMENT ---": "Befehle für die tägliche Arbeit",
     "dev": "vite --host",
     "images:optimize": "node scripts/optimize-images.js",
