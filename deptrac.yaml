@@ -4,6 +4,7 @@
 deptrac:
   paths:
     - src
+  cache_file: .cache/deptrac/.deptrac.cache
 
   layers:
     - name: Contracts
