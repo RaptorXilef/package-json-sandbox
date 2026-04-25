@@ -98,7 +98,8 @@
   "lint-staged": {
     "*.php": [
       "vendor/bin/phpcs",
-      "vendor/bin/phpstan analyze"
+      "vendor/bin/phpstan analyze",
+      "vendor/bin/phpmd analyze --format text --ruleset phpmd.xml.dist"
     ],
     "*.json": "biome check --write --no-errors-on-unmatched",
     "*.js": [
