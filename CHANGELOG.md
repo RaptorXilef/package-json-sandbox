@@ -2,6 +2,12 @@
 
 
 
+## [0.14.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.14.0...v0.14.1) (2026-04-25)
+
+### 🐛 Bug Fixes
+
+* **test:** add coverage metadata to resolve risky test error ([3763426](https://github.com/RaptorXilef/package-json-sandbox/commit/376342608a56eaf4b453daf491c8dbd2423dfb7a))
+
 ## [0.14.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.13.0...v0.14.0) (2026-04-25)
 
 ### 🚀 Features
