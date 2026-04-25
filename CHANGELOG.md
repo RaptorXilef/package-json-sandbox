@@ -2,6 +2,13 @@
 
 
 
+## [0.24.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.23.0...v0.24.0) (2026-04-25)
+
+### 🚀 Features
+
+* **workflow:** expand lint-staged with rector and cs-fixer dry-runs ([6c17728](https://github.com/RaptorXilef/package-json-sandbox/commit/6c177289f668592b41422a5111daa4996bd6c848))
+* **workflow:** full integration of composer tools into lint-staged ([3f1eda5](https://github.com/RaptorXilef/package-json-sandbox/commit/3f1eda55d2853f653676569ab7c14a67dbf9feee))
+
 ## [0.23.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.22.0...v0.23.0) (2026-04-25)
 
 ### 🚀 Features
