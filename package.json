@@ -99,7 +99,9 @@
     "*.php": [
       "vendor/bin/phpcs",
       "vendor/bin/phpstan analyze",
-      "vendor/bin/phpmd analyze --format text --ruleset phpmd.xml.dist"
+      "vendor/bin/phpmd analyze --format text --ruleset phpmd.xml.dist",
+      "vendor/bin/rector process --dry-run",
+      "vendor/bin/php-cs-fixer fix --dry-run --diff --no-interaction"
     ],
     "*.json": "biome check --write --no-errors-on-unmatched",
     "*.js": [
