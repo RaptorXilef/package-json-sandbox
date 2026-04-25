@@ -19,7 +19,10 @@
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1",
-    "phpstan/extension-installer": "^1.4"
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan-strict-rules": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "phpunit/phpunit": "^12.5"
   },
   "autoload": {
     "psr-4": {
@@ -41,28 +44,34 @@
     }
   },
   "scripts": {
+    "// --- 0. Collect ---": "",
+    "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\"",
+    "// --- PHASE 0: SETUP & LIFECYCLE ---": "",
+    "setup": "@php scripts/Setup.php init",
+    "post-install-cmd": "@setup",
+    "post-update-cmd": "@setup",
+    "post-autoload-dump": "@setup",
+    "clear": "@php scripts/Setup.php clear",
+
+    "// --- TESTING ---": "",
+    "test": "phpunit",
+    "test:unit": "phpunit --testsuite Unit",
+    "test:feature": "phpunit --testsuite Feature",
+    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .build/reports/phpunit-html",
+
     "// --- PHP QUALITY ASSURANCE ---": "",
     "phpstan": "phpstan analyse --memory-limit=2G",
     "phpstan:baseline": "phpstan analyse --generate-baseline",
+    "qa": ["@phpstan", "@test"],
 
     "// --- CI / AUTOMATION ---": "",
     "ci:phpstan": "phpstan analyse --error-format=checkstyle --no-progress > .build/reports/phpstan.xml || true",
     "mkdir:reports": "@php -r \"is_dir('.build/reports') || mkdir('.build/reports', 0777, true);\"",
 
-    "// --- LIFECYCLE ---": "",
-    "post-install-cmd": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-
-    "// --- PHASE 0: SETUP & LIFECYCLE ---": "",
-    "setup": "@php scripts/Setup.php init",
-    "//post-install-cmd": "@setup",
-    "post-update-cmd": "@setup",
-    "post-autoload-dump": "@setup",
     "// --- MASTER COMMANDS (QUICK ACCESS) ---": "",
-    "chk": ["@qa"],
-    "fix": ["@fmt"],
-    "fmt": ["@fix:modern", "@fix:style"],
-    "qa": ["@phpstan", "@chk:test", "@chk:modern", "@chk:style"],
-    "// --- 0. Collect ---": "",
-    "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\""
+    "//chk": ["@qa"],
+    "//fix": ["@fmt"],
+    "//fmt": ["@fix:modern", "@fix:style"],
+    "//qa": ["@phpstan", "@chk:test", "@chk:modern", "@chk:style"]
   }
 }
