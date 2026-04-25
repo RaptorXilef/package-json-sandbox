@@ -2,6 +2,12 @@
 
 
 
+## [0.18.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.17.0...v0.18.0) (2026-04-25)
+
+### 🚀 Features
+
+* **qa:** integrate PHPMD 3.0 and finalize PHP 8.4 environment compatibility ([c95d203](https://github.com/RaptorXilef/package-json-sandbox/commit/c95d203654de774c4619d935375af8c1f87a89a5))
+
 ## [0.17.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.16.0...v0.17.0) (2026-04-25)
 
 ### 🚀 Features
