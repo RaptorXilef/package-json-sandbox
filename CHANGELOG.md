@@ -2,6 +2,12 @@
 
 
 
+## [0.15.2](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.1...v0.15.2) (2026-04-25)
+
+### 🧹 Chore / Maintenance
+
+* **composer:** add missing rector scripts and cleanup master commands ([185b3cf](https://github.com/RaptorXilef/package-json-sandbox/commit/185b3cfceab91e07bfc5934ff8919f3833fefc20))
+
 ## [0.15.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.0...v0.15.1) (2026-04-25)
 
 ### 🧹 Chore / Maintenance
