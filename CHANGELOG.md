@@ -2,6 +2,16 @@
 
 
 
+## [0.15.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.14.1...v0.15.0) (2026-04-25)
+
+### 🚀 Features
+
+* **rector:** implement comprehensive high-end refactoring rules ([5e37cfd](https://github.com/RaptorXilef/package-json-sandbox/commit/5e37cfdc6a7f479cfff1dfe664231913044aaba9))
+
+### ⚙️ Refactoring
+
+* **composer:** stabilize dependencies and improve CI resilience ([076785f](https://github.com/RaptorXilef/package-json-sandbox/commit/076785f9252da49fff94b9a0c16b3a00b89744fe))
+
 ## [0.14.1](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.14.0...v0.14.1) (2026-04-25)
 
 ### 🐛 Bug Fixes
