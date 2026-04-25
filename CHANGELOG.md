@@ -2,6 +2,12 @@
 
 
 
+## [0.14.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.13.0...v0.14.0) (2026-04-25)
+
+### 🚀 Features
+
+* **qa:** implement Pest PHP, Deptrac and Infection for high-end testing ([fcc0bf4](https://github.com/RaptorXilef/package-json-sandbox/commit/fcc0bf43a8b60c52c409a93e6926ad342cc08274))
+
 ## [0.13.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.12.0...v0.13.0) (2026-04-25)
 
 ### 🚀 Features
