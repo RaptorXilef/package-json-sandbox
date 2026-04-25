@@ -2,6 +2,12 @@
 
 
 
+## [0.16.0](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.3...v0.16.0) (2026-04-25)
+
+### 🚀 Features
+
+* **style:** integrate PHP-CS-Fixer with PER-CS and custom rules ([02f1d8c](https://github.com/RaptorXilef/package-json-sandbox/commit/02f1d8c53a7e898680afdc48163b3a0616d06db7))
+
 ## [0.15.3](https://github.com/RaptorXilef/package-json-sandbox/compare/v0.15.2...v0.15.3) (2026-04-25)
 
 ### 🐛 Bug Fixes
