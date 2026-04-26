@@ -2,6 +2,12 @@
 
 
 
+## [0.24.3](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.2...v0.24.3) (2026-04-26)
+
+### 🧹 Chore / Maintenance
+
+* **workflow:** harmonize npm and composer scripts into phased structures ([f377122](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/f3771225521f97ba0a1919b30d44bc94c932ca59))
+
 ## [0.24.2](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.1...v0.24.2) (2026-04-26)
 
 ### 🧹 Chore / Maintenance
