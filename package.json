@@ -1,6 +1,6 @@
 {
   "name": "@raptorxilef/php-js-dev-env-blueprint",
-  "version": "0.24.3",
+  "version": "0.24.4",
   "description": "Testumgebung meiner NPM/package.json Einstellungen",
   "type": "module",
   "author": "Felix Maywald",

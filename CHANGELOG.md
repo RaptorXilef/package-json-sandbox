@@ -2,6 +2,16 @@
 
 
 
+## [0.24.4](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.3...v0.24.4) (2026-04-26)
+
+### ⚙️ Refactoring
+
+* finalize PHP 8.3 quality standards and linting workflow ([d104c3e](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/d104c3e4e48a3cafbdd35ec5dc7560da388c2cd1))
+
+### 🧹 Chore / Maintenance
+
+* resolve IDE diagnostics and composer task errors ([455dfa3](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/455dfa3945b0ea51f2a246e7258dda31ff18d20b))
+
 ## [0.24.3](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.2...v0.24.3) (2026-04-26)
 
 ### 🧹 Chore / Maintenance
