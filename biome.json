@@ -17,6 +17,7 @@
       "!!**/*.min.css",
       "!!.cache",
       "!!.build",
+      "!!.debug",
       "!!package-lock.json",
       "!!composer.lock",
       "!!_Notizen"

@@ -7,12 +7,5 @@
             "level": 1
         }
     },
-    "ignores": [
-        "node_modules",
-        "vendor",
-        "CHANGELOG.md",
-        "ToDo*.md",
-        "*notizen*.md",
-        "*bak*.md"
-    ]
+    "ignores": ["node_modules", "vendor", "CHANGELOG.md", "ToDo*.md", "*notizen*.md", "*bak*.md"]
 }

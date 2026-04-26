@@ -6,8 +6,8 @@ namespace App;
 
 class Example
 {
-    public function add(int $a, int $b): int
+    public function add(int $var_a, int $var_b): int
     {
-        return $a + $b;
+        return $var_a + $var_b;
     }
 }

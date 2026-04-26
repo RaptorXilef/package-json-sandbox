@@ -99,7 +99,7 @@
     "// --- PHP QUALITY ASSURANCE ---": "",
     "phpstan": "phpstan analyse --memory-limit=2G",
     "phpstan:baseline": "phpstan analyse --generate-baseline",
-    "lint:cpd": "php tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
+    "lint:cpd": "php -d display_errors=0 tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
     "chk:md": "phpmd analyze src --format text --ruleset phpmd.xml.dist",
 
     "// --- CI / AUTOMATION ---": "",

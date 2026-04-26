@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createHero } from '../../src/js/components';
+import { createHero } from '../../src/assets/js/components';
 
 describe('Hero Component Snapshots', () => {
     it('sollte das Hero-HTML korrekt rendern', () => {

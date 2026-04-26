@@ -19,8 +19,8 @@ export default defineConfig({
         manifest: true, // Erzeugt eine manifest.json für PHP
         rollupOptions: {
             input: {
-                main: path.resolve(__dirname, 'src/js/main.js'),
-                styles: path.resolve(__dirname, 'src/scss/main.scss'),
+                main: path.resolve(__dirname, 'src/assets/js/main.js'),
+                styles: path.resolve(__dirname, 'src/assets/scss/main.scss'),
             },
         },
     },

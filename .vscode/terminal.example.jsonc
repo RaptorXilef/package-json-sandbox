@@ -1,5 +1,5 @@
-[
-// Optional
+{
+    // Optional
     // Konsolen / Terminal
     // Muss möglicherweise in die Globale settings.json übertragen werden
     "terminal.integrated.profiles.windows": {

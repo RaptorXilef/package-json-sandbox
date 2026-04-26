@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { updateHeroText } from '../../src/js/domUtils';
+import { updateHeroText } from '../../src/assets/js/domUtils';
 
 describe('DOM Utils', () => {
     beforeEach(() => {
