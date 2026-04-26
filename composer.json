@@ -59,8 +59,8 @@
   "scripts": {
     "// --- PHASE 0: SETUP & LIFECYCLE ---": "Initialisierung und Bereinigung",
     "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\"",
-    "setup": "@php scripts/Setup.php init",
-    "clear": "@php scripts/Setup.php clear",
+    "setup": "@php scripts/console.php init",
+    "clear": "@php scripts/console.php clear",
     "//post-install-cmd": "@setup",
     "//post-update-cmd": "@setup",
     "post-autoload-dump": "@setup",
@@ -107,7 +107,7 @@
     ],
 
     "// --- PHASE 5: MAINTENANCE & UTILS ---": "Hilfswerkzeuge",
-    "util:up": "@php scripts/Setup.php up",
+    "util:up": "@php scripts/console.php up",
     "util:dump": "composer dump-autoload -o",
     "util:pkg-up": ["npm audit fix", "composer update", "@util:up"],
 
