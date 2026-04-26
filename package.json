@@ -1,5 +1,5 @@
 {
-  "name": "@raptorxilef/package-json-sandbox",
+  "name": "@raptorxilef/php-js-dev-env-blueprint",
   "version": "0.24.0",
   "description": "Testumgebung meiner NPM/package.json Einstellungen",
   "type": "module",
@@ -44,7 +44,7 @@
     "lint:html": "markuplint \"**/*.html\"",
     "// --- 4. ACCESSIBILITY (A11Y) ---": "Barrierefreiheits-Checks",
     "lint:a11y": "axe public/index.html",
-    "lint:a11y:url": "axe http://localhost/package-json-sandbox",
+    "lint:a11y:url": "axe http://localhost/php-js-dev-env-blueprint",
     "ci:lint:a11y": "axe --ci --tags wcag2a,wcag2aa http://localhost:3000",
     "// --- 5. BUILD ---": "Erstellung der Produktions-Assets",
     "build": "vite build",
