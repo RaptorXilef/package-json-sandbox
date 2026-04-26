@@ -2,6 +2,12 @@
 
 
 
+## [0.24.2](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.1...v0.24.2) (2026-04-26)
+
+### 🧹 Chore / Maintenance
+
+* finalize project structure and validate full QA suite ([5805d2e](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/5805d2e4fcbdb0a5efee190a6fae9b4c8148265c))
+
 ## [0.24.1](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.0...v0.24.1) (2026-04-26)
 
 ### 📚 Dokumentation
