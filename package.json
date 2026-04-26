@@ -23,6 +23,7 @@
     "legacy:css:build": "sass src/scss:public/assets/css --style=compressed --no-source-map",
     "legacy:js:build": "node scripts/legacy-minify-js.js",
     "legacy:build": "npm run legacy:css:build && npm run legacy:js:build",
+    "legacy:images:optimize": "node scripts/optimize-images.js",
     "// --- 2. TESTING ---": "Unit-Tests und Test-Runner",
     "test": "vitest",
     "test:run": "vitest run",
