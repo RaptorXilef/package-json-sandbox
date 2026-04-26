@@ -2,6 +2,22 @@
 
 
 
+## [0.24.1](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.0...v0.24.1) (2026-04-26)
+
+### 📚 Dokumentation
+
+* finalize toolstack documentation and add sharp alias ([4cb7edf](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/4cb7edf6b4cc00340bf720dc8c5f9c332176084a))
+
+### 🧹 Chore / Maintenance
+
+* **project:** rename repository references to php-js-dev-env-blueprint ([a8a7cba](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/a8a7cbaa8550f003adb3b5cece85a47cfea311cb))
+* **vscode:** finalize extension recommendations ([2e4e6bc](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/2e4e6bce1149a0c90b1e043f5050085240d7d9e1))
+* **vscode:** implement comprehensive IDE standards and snippets ([366d891](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/366d8910b24393cd2f388c5f22448f3de1342eb6))
+
+# Changelog
+
+
+
 ## [0.24.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.23.0...v0.24.0) (2026-04-25)
 
 ### 🚀 Features
