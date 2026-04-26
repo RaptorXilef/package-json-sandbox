@@ -57,52 +57,40 @@
     }
   },
   "scripts": {
-    "// --- 0. Collect ---": "",
+    "// --- PHASE 0: SETUP & LIFECYCLE ---": "Initialisierung und Bereinigung",
     "collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\"",
-
-    "// --- PHASE 0: SETUP & LIFECYCLE ---": "",
     "setup": "@php scripts/Setup.php init",
+    "clear": "@php scripts/Setup.php clear",
     "//post-install-cmd": "@setup",
     "//post-update-cmd": "@setup",
     "post-autoload-dump": "@setup",
-    "clear": "@php scripts/Setup.php clear",
 
-    "// --- TESTING (UNIT) ---": "",
-    "//test": "phpunit",
-    "//test:unit": "phpunit --testsuite Unit",
-    "//test:feature": "phpunit --testsuite Feature",
-    "//test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .build/reports/phpunit-html",
+    "// --- PHASE 1: STATIC ANALYSIS (CHECKING) ---": "Read-Only Qualitätsprüfungen",
+    "chk:stan": "phpstan analyse --memory-limit=2G",
+    "chk:stan-baseline": "phpstan analyse --generate-baseline",
+    "chk:cs": "phpcs",
+    "chk:style": "php-cs-fixer fix --dry-run --diff --no-interaction",
+    "chk:md": "phpmd analyze src --format text --ruleset phpmd.xml.dist",
+    "chk:cpd": "php -d display_errors=0 tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
+    "chk:arch": "deptrac analyse --config-file=deptrac.yaml",
+    "chk:modern": "rector process --dry-run",
 
-    "// --- TESTING (PEST) ---": "",
+    "// --- PHASE 2: TESTING ---": "Automatisierte Tests",
     "test": "pest --parallel",
     "test:full": "pest --parallel --display-deprecations",
     "test:coverage": "XDEBUG_MODE=coverage pest --coverage --coverage-html .build/reports/phpunit-html",
-
-    "// --- TESTING (Mutation) ---": "",
     "test:mutation": "php -d xdebug.mode=coverage tools/infection.phar --threads=4 --min-msi=30 --coverage=.cache/phpunit",
+    "//test:phpunit": "phpunit",
+    "//test:unit": "phpunit --testsuite Unit",
+    "//test:feature": "phpunit --testsuite Feature",
+    "//test:legacy-coverage": "XDEBUG_MODE=coverage phpunit --coverage-html .build/reports/phpunit-html",
 
-    "// --- ARCHITECTURE ---": "",
-    "chk:arch": "deptrac analyse --config-file=deptrac.yaml",
-
-    "// --- PHASE : STYLE (PHP-CS-FIXER) ---": "",
-    "chk:style": "php-cs-fixer fix --dry-run --diff --no-interaction",
-    "fix:style": "php-cs-fixer fix --allow-risky=yes",
-
-    "// --- PHASE : STYLE & QUALITY (PHPCS) ---": "",
-    "chk:cs": "phpcs",
+    "// --- PHASE 3: FIXING & FORMATTING ---": "Aktive Code-Manipulation",
     "fix:cs": "phpcbf",
-
-    "// --- MODERNIZATION (RECTOR) ---": "",
-    "chk:modern": "rector process --dry-run",
+    "fix:style": "php-cs-fixer fix --allow-risky=yes",
     "fix:modern": "rector process",
 
-    "// --- PHP QUALITY ASSURANCE ---": "",
-    "phpstan": "phpstan analyse --memory-limit=2G",
-    "phpstan:baseline": "phpstan analyse --generate-baseline",
-    "lint:cpd": "php -d display_errors=0 tools/phpcpd.phar src/ --min-lines=5 --min-tokens=70",
-    "chk:md": "phpmd analyze src --format text --ruleset phpmd.xml.dist",
-
-    "// --- CI / AUTOMATION ---": "",
+    "// --- PHASE 4: CI / AUTOMATION ---": "Spezifische Reports für Pipelines",
     "mkdir:reports": "@php -r \"is_dir('.build/reports') || mkdir('.build/reports', 0777, true);\"",
     "ci:phpstan": [
       "@mkdir:reports",
@@ -118,12 +106,12 @@
       "phpmd analyze src --format xml --ruleset phpmd.xml.dist --reportfile-xml .build/reports/phpmd.xml || true"
     ],
 
-    "// --- PHASE : MAINTENANCE & UTILS ---": "",
+    "// --- PHASE 5: MAINTENANCE & UTILS ---": "Hilfswerkzeuge",
     "util:up": "@php scripts/Setup.php up",
     "util:dump": "composer dump-autoload -o",
     "util:pkg-up": ["npm audit fix", "composer update", "@util:up"],
 
-    "// --- MASTER COMMANDS ---": "",
+    "// --- MASTER COMMANDS ---": "Zusammengefasste Workflows",
     "chk": ["@qa"],
     "fix": ["@fmt", "@fix:cs"],
     "fmt": ["@fix:modern", "@fix:style"],
@@ -131,10 +119,10 @@
       "@chk:style",
       "@chk:cs",
       "@chk:md",
-      "@lint:cpd",
+      "@chk:cpd",
       "@chk:arch",
       "@chk:modern",
-      "@phpstan",
+      "@chk:stan",
       "@test"
     ],
     "qa:full": ["@qa", "@test:mutation"]

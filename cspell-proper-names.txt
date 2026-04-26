@@ -59,6 +59,7 @@ slevomat
 solnurkarim
 sqlite
 squizlabs
+stan
 stkb
 stylelint
 tomoki
