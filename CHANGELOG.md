@@ -2,6 +2,18 @@
 
 
 
+## [0.24.7](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.6...v0.24.7) (2026-04-27)
+
+### 🐛 Bug Fixes
+
+* correct paths and add safety checks to legacy-js script ([6ee6de9](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/6ee6de9001351921bc412c5d527f5f7f0aae122e))
+* correct source path in legacy-js-minify script ([d6fa9ab](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/d6fa9abb015aa86815bb8153f51d64dd4ec678d2))
+
+### 🧹 Chore / Maintenance
+
+* **qa:** adjust PHPMD rules for architectural requirements ([7ca8399](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/7ca83994726a8b1f00c13b59c34a484b1f665c8d))
+* **qa:** allow fully qualified names in global namespace scope ([a526f6c](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/a526f6c3740ea1cc50183b9a7cc5ab3414e1f936))
+
 ## [0.24.6](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.5...v0.24.6) (2026-04-27)
 
 ### 💎 Styling
