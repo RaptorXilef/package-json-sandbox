@@ -2,6 +2,16 @@
 
 
 
+## [0.24.5](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.4...v0.24.5) (2026-04-27)
+
+### ⚙️ Refactoring
+
+* relocate bootstrap and harden rector configuration ([bb61445](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/bb61445f3ec2fe83cba9d742d0a091d199a7cf02))
+
+### 🧹 Chore / Maintenance
+
+* **vscode:** resolve persistent linter conflicts via GUI sync ([301162d](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/301162da1e0a2dc55c1bbc5bc54c64b68396d67f))
+
 ## [0.24.4](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.3...v0.24.4) (2026-04-26)
 
 ### ⚙️ Refactoring
