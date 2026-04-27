@@ -15,7 +15,6 @@ $finder = (new Finder())
         __DIR__ . '/src',
         __DIR__ . '/tests',
         __DIR__ . '/public',
-        __DIR__ . '/bootstrap',
         __DIR__ . '/config',
     ])
     ->name('*.php')
