@@ -15,6 +15,11 @@ for (const entry of config) {
         fs.mkdirSync(entry.dest, { recursive: true });
     }
 
+    if (!fs.existsSync(entry.src)) {
+        console.warn(`⚠️ Warnung: Quellverzeichnis ${entry.src} nicht gefunden. Überspringe...`);
+        continue;
+    }
+
     const files = fs
         .readdirSync(entry.src)
         .filter((f) => f.endsWith('.js') && !f.endsWith('.min.js'));
