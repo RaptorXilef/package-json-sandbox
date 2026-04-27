@@ -2,6 +2,13 @@
 
 
 
+## [0.24.6](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.5...v0.24.6) (2026-04-27)
+
+### 💎 Styling
+
+* enforce global namespace backslashes for classes ([8678e52](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/8678e5240dcc5541e37de61afa42656d8b2fa4db))
+* force leading backslash for global classes and constants ([410ac2a](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/410ac2a278b35cda7fe6168af4cc5199d77422be))
+
 ## [0.24.5](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.4...v0.24.5) (2026-04-27)
 
 ### ⚙️ Refactoring
