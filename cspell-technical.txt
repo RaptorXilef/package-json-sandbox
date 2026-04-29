@@ -1,3 +1,4 @@
+Autoloading
 Barrierefreiheits
 basepath
 Behaviour
@@ -19,6 +20,7 @@ phpdotenv
 Pirokai
 redhat
 reportfile
+sanitisiert
 stackdump
 Sysnative
 testsuites
@@ -30,3 +32,4 @@ Versionierung
 vlucas
 wcag
 windir
+Zyklomatische
