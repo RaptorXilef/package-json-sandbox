@@ -40,7 +40,7 @@
       },
       "suspicious": {
         "noVar": "error",
-        "noConsole": "off",
+        "noConsole": "error",
         "noDebugger": "warn"
       },
       "correctness": {
@@ -62,6 +62,16 @@
       "includes": ["*.json", "*.yml"],
       "formatter": {
         "indentWidth": 2
+      }
+    },
+    {
+      "includes": ["scripts/**/*.js"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
       }
     }
   ]
