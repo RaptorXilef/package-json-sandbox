@@ -2,6 +2,18 @@
 
 
 
+## [0.25.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.7...v0.25.0) (2026-04-29)
+
+### 🚀 Features
+
+* **scripts:** add CLI arguments and silent mode to collect-all.js ([457bc10](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/457bc10ad7d003ba23bfe989232495833e769151))
+* **scripts:** enhance collect-all.js with ANSI colors and help system ([1b1ecaf](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/1b1ecaf292f1fd0dd64fe8a32825df73abe9fc57))
+* **scripts:** replace PowerShell collector with cross-platform Node.js script ([7c7f482](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/7c7f482c587222f17038334b0646891cecea2f6e))
+
+### ⚙️ Refactoring
+
+* implement extendable configuration patterns for tools ([d53d1d3](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/d53d1d34c7a0969dd2ec941a12f0613437ffb6a0))
+
 ## [0.24.7](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.6...v0.24.7) (2026-04-27)
 
 ### 🐛 Bug Fixes
