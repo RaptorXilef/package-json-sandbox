@@ -2,6 +2,13 @@
 
 
 
+## [0.25.1](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.25.0...v0.25.1) (2026-04-29)
+
+### 📚 Dokumentation
+
+* create toolstack.md and organize documentation structure ([099905d](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/099905d4e36b693ae952ea01159e0232eb6856ff))
+* implement modular high-end documentation system ([0d392b8](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/0d392b882ad14874dd7523552e26b77047e1151c))
+
 ## [0.25.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.24.7...v0.25.0) (2026-04-29)
 
 ### 🚀 Features
