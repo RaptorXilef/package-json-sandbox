@@ -118,7 +118,7 @@ function getFiles(dir, filter, exclDirs, exclFiles, includeRoot, currentFiles = 
     return currentFiles;
 }
 
-function startFileCollection(configKey) {
+function startFileCollection(configKey, silent = false) {
     const conf = configs[configKey];
     const timestamp = new Date().toISOString().replace(/[:T]/g, '-').split('.')[0];
     const outputName = `${conf.name}_v.${version}_${timestamp}${conf.ext}`;
@@ -126,7 +126,7 @@ function startFileCollection(configKey) {
 
     if (!fs.existsSync(debugFolder)) fs.mkdirSync(debugFolder, { recursive: true });
 
-    console.log(`\n🚀 Starte Sammlung: ${conf.name}...`);
+    if (!silent) console.log(`\n🚀 Starte Sammlung: ${conf.name}...`);
 
     const foundFiles = getFiles(
         basePath,
@@ -137,7 +137,7 @@ function startFileCollection(configKey) {
     );
 
     if (foundFiles.length === 0) {
-        console.log('❌ Keine Dateien gefunden.');
+        if (!silent) console.log('❌ Keine Dateien gefunden.');
         return;
     }
 
@@ -148,9 +148,9 @@ function startFileCollection(configKey) {
             combinedContent += `// ========== START FILE: [${file.relPath}] ==========\n`;
             combinedContent += `${content}\n`;
             combinedContent += `// ========== END FILE: [${file.relPath}] ==========\n\n`;
-            console.log(` + ${file.relPath}`);
+            if (!silent) console.log(` + ${file.relPath}`);
         } catch (_e) {
-            console.log(` ! Überspringe (Binär?): ${file.relPath}`);
+            if (!silent) console.log(` ! Überspringe (Binär?): ${file.relPath}`);
         }
     }
 
@@ -158,57 +158,76 @@ function startFileCollection(configKey) {
     console.log(`✅ Erfolg: ${outputName} erstellt (${foundFiles.length} Dateien).`);
 }
 
-// --- 4. Interaktives Menü ---
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+// --- 4. CLI & Menü Handling ---
+const args = process.argv.slice(2);
 
-function showMenu() {
-    console.clear();
-    console.log('===============================================');
-    console.log('    DATEI-ZUSAMMENFASSUNG (NodeJS Version)      ');
-    console.log(`    Root: ${basePath}`);
-    console.log(`    Version: ${version}`);
-    console.log('===============================================');
-    console.log('1) JavaScript (*.js)');
-    console.log('2) PHP (*.php)');
-    console.log('3) PHTML (*.phtml)');
-    console.log('4) SCSS (*.scss)');
-    console.log('5) PROJEKT-ZUSAMMENFASSUNG (All -> .txt)');
-    console.log('-----------------------------------------------');
-    console.log(`T) Toggle Root-Files: ${globalIncludeRootFiles ? 'AN' : 'AUS'}`);
-    console.log('A) ALLE nacheinander (1-4)');
-    console.log('Q) Beenden');
-    console.log('-----------------------------------------------');
+if (args.length > 0) {
+    // --- STUMMER MODUS (CLI) ---
+    if (args.includes('--root')) globalIncludeRootFiles = true;
 
-    rl.question('Wähle eine Option: ', (answer) => {
-        const choice = answer.toUpperCase();
-
-        if (choice === 'Q') process.exit();
-        if (choice === 'T') {
-            globalIncludeRootFiles = !globalIncludeRootFiles;
-            showMenu();
-            return;
-        }
-        if (choice === 'A') {
-            ['JS', 'PHP', 'PHTML', 'SCSS'].forEach((k) => {
-                startFileCollection(k);
-            });
-            rl.question('\nFertig. Drücke Enter...', showMenu);
-            return;
-        }
-
-        const map = { 1: 'JS', 2: 'PHP', 3: 'PHTML', 4: 'SCSS', 5: 'PROJECT' };
-        if (map[choice]) {
-            startFileCollection(map[choice]);
-            rl.question('\nFertig. Drücke Enter...', showMenu);
-        } else {
-            console.log('Ungültige Auswahl!');
-            setTimeout(showMenu, 1000);
-        }
+    if (args.includes('--all')) {
+        ['JS', 'PHP', 'PHTML', 'SCSS'].forEach((k) => {
+            startFileCollection(k, true);
+        });
+    } else {
+        if (args.includes('--js')) startFileCollection('JS', true);
+        if (args.includes('--php')) startFileCollection('PHP', true);
+        if (args.includes('--phtml')) startFileCollection('PHTML', true);
+        if (args.includes('--scss')) startFileCollection('SCSS', true);
+        if (args.includes('--project')) startFileCollection('PROJECT', true);
+    }
+    process.exit(0);
+} else {
+    // --- INTERAKTIVER MODUS ---
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
     });
-}
 
-// Start
-showMenu();
+    const showMenu = () => {
+        console.clear();
+        console.log('===============================================');
+        console.log('    DATEI-ZUSAMMENFASSUNG (NodeJS Version)      ');
+        console.log(`    Root: ${basePath}`);
+        console.log(`    Version: ${version}`);
+        console.log('===============================================');
+        console.log('1) JavaScript (*.js)');
+        console.log('2) PHP (*.php)');
+        console.log('3) PHTML (*.phtml)');
+        console.log('4) SCSS (*.scss)');
+        console.log('5) PROJEKT-ZUSAMMENFASSUNG (All -> .txt)');
+        console.log('-----------------------------------------------');
+        console.log(`T) Toggle Root-Files: ${globalIncludeRootFiles ? 'AN' : 'AUS'}`);
+        console.log('A) ALLE nacheinander (1-4)');
+        console.log('Q) Beenden');
+        console.log('-----------------------------------------------');
+
+        rl.question('Wähle eine Option: ', (answer) => {
+            const choice = answer.toUpperCase();
+
+            if (choice === 'Q') process.exit();
+            if (choice === 'T') {
+                globalIncludeRootFiles = !globalIncludeRootFiles;
+                showMenu();
+                return;
+            }
+            if (choice === 'A') {
+                ['JS', 'PHP', 'PHTML', 'SCSS'].forEach((k) => {
+                    startFileCollection(k);
+                });
+                rl.question('\nFertig. Drücke Enter...', showMenu);
+                return;
+            }
+
+            const map = { 1: 'JS', 2: 'PHP', 3: 'PHTML', 4: 'SCSS', 5: 'PROJECT' };
+            if (map[choice]) {
+                startFileCollection(map[choice]);
+                rl.question('\nFertig. Drücke Enter...', showMenu);
+            } else {
+                console.log('Ungültige Auswahl!');
+                setTimeout(showMenu, 1000);
+            }
+        });
+    };
+    showMenu();
+}
