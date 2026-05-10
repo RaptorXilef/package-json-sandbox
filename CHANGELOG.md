@@ -2,6 +2,13 @@
 
 
 
+## [0.26.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.25.1...v0.26.0) (2026-05-10)
+
+### 🚀 Features
+
+* **scripts:** add extract-all.js for reversing code bundles ([2389fce](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/2389fce90bb364789490d928f31eca8ee15ca57f))
+* **scripts:** add versioning and master bundle to collect-all.js ([01537f1](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/01537f1a28f3f5b4a20e5631985b22ec63f1c664))
+
 ## [0.25.1](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.25.0...v0.25.1) (2026-04-29)
 
 ### 📚 Dokumentation
