@@ -43,6 +43,7 @@ nhoizey
 nobuhito
 oderwat
 pestphp
+pham
 phpcodesniffer
 phpcompatibility
 phpcpd
