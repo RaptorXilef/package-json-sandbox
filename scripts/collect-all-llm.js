@@ -112,40 +112,47 @@ const configs = {
  */
 function optimizeTokens(content, fileExtension) {
     const ext = fileExtension.toLowerCase();
+    const isPhpOrPhtml = ext === '.php' || ext === '.phtml';
+    const isJsOrScss = ext === '.js' || ext === '.scss';
 
     // 1. Schritt: Kommentare entfernen (außer deine geschützten Pfad-Kommentare)
-    if (ext === '.js' || ext === '.scss' || ext === '.php' || ext === '.phtml') {
+    if (isJsOrScss || isPhpOrPhtml) {
         // Multi-line Kommentare /* ... */ entfernen (außer sie enthalten geschützte Wörter)
         content = content.replace(/\/\*[\s\S]*?\*\//g, (match) => {
-            if (/path:|pfad:|file:/i.test(match)) return match;
+            // Bei JS/SCSS behalten wir geschützte Kommentare, bei PHP/PHTML löschen wir sie gnadenlos
+            if (isJsOrScss && /path:|pfad:|file:/i.test(match)) return match;
             return '';
         });
 
         // Single-line Kommentare // ... entfernen
         // Verhindert das matchen von URLs (http://) durch [^:]
         content = content.replace(/(^|[^:])\/\/.*$/gm, (match, prefix) => {
-            if (/path:|pfad:|file:/i.test(match)) return match;
+            if (isJsOrScss && /path:|pfad:|file:/i.test(match)) return match;
             return prefix; // Behalte das Zeichen vor dem //
         });
 
-        // Speziell für PHP: # Kommentare entfernen
-        if (ext === '.php' || ext === '.phtml') {
+        // Speziell für PHP/PHTML: # Kommentare entfernen
+        if (isPhpOrPhtml) {
             content = content.replace(/(^|[^"'])#.*$/gm, (match, prefix) => {
-                if (/path:|pfad:|file:/i.test(match)) return match;
+                // if (/path:|pfad:|file:/i.test(match)) return match;
                 return prefix;
             });
         }
     }
 
-    // 2. Schritt: Whitespace & Zeilenumbrüche radikal minimieren
+    // Extra-Schritt für PHP/PHTML/JS/SCSS: Mehrfache Leerzeichen vor und nach '=>', '+=', '=', '=>' etc. kollabieren
+    // Reduziert tabellarische Ausrichtungen wie 'key      => value' zu 'key => value'
+    content = content.replace(/\s*(=>|==|=|<=|>=|\+=|-=)\s*/g, ' $1 ');
+
+    // 2. Schritt: Whitespace & Zeilenumbrüche minimieren
     if (ext === '.phtml') {
-        // PHTML-Schonwaschgang: Kollabiert nur mehrfache Leerzeilen zu einer einzigen,
+        // PHTML-Schonwaschgang: Kollabiert mehrfache Leerzeilen, schützt aber HTML-Einrückungen
         // um HTML-Strukturen und Inline-PHP nicht zu beschädigen.
         content = content.replace(/\n\s*\n/g, '\n');
         return content.trim();
     }
 
-    // Für JS, PHP und SCSS gehen wir jetzt zeilenweise vor
+    // Für JS, PHP und SCSS gehen wir zeilenweise vor, um die Struktur präzise zu stauchen
     const lines = content.split(/\r?\n/);
     const optimizedLines = [];
 
@@ -153,8 +160,8 @@ function optimizeTokens(content, fileExtension) {
         const line = lines[i].trim();
         if (line.length === 0) continue;
 
-        // Wenn die Zeile ein geschützter Kommentar ist, MUSS sie eine eigene Zeile bleiben
-        if (/^\/\/.*(path:|pfad:|file:)/i.test(line)) {
+        // JS/SCSS: Wenn die Zeile ein geschützter Kommentar ist, MUSS sie eine eigene Zeile bleiben
+        if (isJsOrScss && /^\/\/.*(path:|pfad:|file:)/i.test(line)) {
             optimizedLines.push(line);
             continue;
         }
@@ -165,15 +172,18 @@ function optimizeTokens(content, fileExtension) {
             continue;
         }
 
-        // Ansonsten an die letzte Zeile hängen, sofern die letzte Zeile kein geschützter Kommentar war
+        // Zeilen zusammenhängen, wenn die vorherige Zeile kein kritischer Stopper war
         if (
             optimizedLines.length > 0 &&
-            !/^\/\/.*(path:|pfad:|file:)/i.test(optimizedLines[optimizedLines.length - 1]) &&
+            !(
+                isJsOrScss &&
+                /^\/\/.*(path:|pfad:|file:)/i.test(optimizedLines[optimizedLines.length - 1])
+            ) &&
             !(ext === '.php' && /^<\?php/i.test(optimizedLines[optimizedLines.length - 1]))
         ) {
             const lastLine = optimizedLines[optimizedLines.length - 1];
 
-            // Ein kleines Leerzeichen spendieren, falls Trennung nötig (z.B. zwischen Keywords)
+            // Ein kleines Leerzeichen spendieren, falls Wortgrenzen aufeinandertreffen (z.B. zwischen Keywords)
             if (/[a-zA-Z0-9_]$/.test(lastLine) && /^[a-zA-Z0-9_]/.test(line)) {
                 optimizedLines[optimizedLines.length - 1] += ' ' + line;
             } else {
