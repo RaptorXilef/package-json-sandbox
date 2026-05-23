@@ -137,26 +137,54 @@ function optimizeTokens(content, fileExtension) {
         }
     }
 
-    // 2. Schritt: Whitespace & Newlines komprimieren
+    // 2. Schritt: Whitespace & Zeilenumbrüche radikal minimieren
     if (ext === '.phtml') {
         // PHTML-Schonwaschgang: Kollabiert nur mehrfache Leerzeilen zu einer einzigen,
         // um HTML-Strukturen und Inline-PHP nicht zu beschädigen.
         content = content.replace(/\n\s*\n/g, '\n');
-        content = content.trim();
-    } else {
-        // Aggressiver Modus für JS, PHP, SCSS
-        // Mehrere Leerzeilen/Umbrüche auf genau einen Zeilenumbruch reduzieren
-        content = content.replace(/\r?\n\s*\r?\n/g, '\n');
-
-        // Zeilenweise trimmen (Einrückungen am Zeilenanfang und -ende entfernen)
-        content = content
-            .split('\n')
-            .map((line) => line.trim())
-            .filter((line) => line.length > 0) // Komplett leere Zeilen löschen
-            .join('\n');
+        return content.trim();
     }
 
-    return content;
+    // Für JS, PHP und SCSS gehen wir jetzt zeilenweise vor
+    const lines = content.split(/\r?\n/);
+    const optimizedLines = [];
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (line.length === 0) continue;
+
+        // Wenn die Zeile ein geschützter Kommentar ist, MUSS sie eine eigene Zeile bleiben
+        if (/^\/\/.*(path:|pfad:|file:)/i.test(line)) {
+            optimizedLines.push(line);
+            continue;
+        }
+
+        // Sicherheitsmaßnahme für PHP-Tags und Deklarationen
+        if (ext === '.php' && (/^<\?php/i.test(line) || /^declare\s*\(/i.test(line))) {
+            optimizedLines.push(line);
+            continue;
+        }
+
+        // Ansonsten an die letzte Zeile hängen, sofern die letzte Zeile kein geschützter Kommentar war
+        if (
+            optimizedLines.length > 0 &&
+            !/^\/\/.*(path:|pfad:|file:)/i.test(optimizedLines[optimizedLines.length - 1]) &&
+            !(ext === '.php' && /^<\?php/i.test(optimizedLines[optimizedLines.length - 1]))
+        ) {
+            const lastLine = optimizedLines[optimizedLines.length - 1];
+
+            // Ein kleines Leerzeichen spendieren, falls Trennung nötig (z.B. zwischen Keywords)
+            if (/[a-zA-Z0-9_]$/.test(lastLine) && /^[a-zA-Z0-9_]/.test(line)) {
+                optimizedLines[optimizedLines.length - 1] += ' ' + line;
+            } else {
+                optimizedLines[optimizedLines.length - 1] += line;
+            }
+        } else {
+            optimizedLines.push(line);
+        }
+    }
+
+    return optimizedLines.join('\n');
 }
 
 /**
