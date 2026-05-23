@@ -9,10 +9,12 @@ Colour
 ehthumbs
 esktop
 issets
+matchen
 maxmethods
 mockst
 Monokai
 nbproject
+pfad
 phar
 phpcbf
 PHPCBF
