@@ -2,6 +2,26 @@
 
 
 
+## [0.27.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.26.0...v0.27.0) (2026-07-05)
+
+### 🚀 Features
+
+* **scripts:** introduce token-optimized code collection script for LLM prompts ([a214ce0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/a214ce08ebf7ea352d05140cfc12410d895e42c7))
+
+### ⚡ Performance
+
+* **scripts:** append minimized suffixes to output files and mirror directories ([d667d34](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/d667d3440e8e7c89fd48c2ee6fb1b581ed33f6c3))
+* **scripts:** collapse assignment operators and remove redundant PHP headers ([5ed1164](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/5ed1164c5c9bd6f6d371be9510ff7fa0d664d31d))
+* **scripts:** maximize token saving via aggressive line collapsing ([425bba5](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/425bba5001f7baa6b0aa865a1fe2da551a5f0b7a))
+
+### ⚙️ Refactoring
+
+* **config:** add project-wide code formatting and style configuration ([6101491](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/6101491ff0a45ed7725d702a7e22a6fbaa471e35))
+
+### 🧹 Chore / Maintenance
+
+* **build,ci:** update development environment core tools, alignment rules and repository standards ([4a51e66](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/4a51e668a914a3420879f8a7c6e8eeccdf11eaee))
+
 ## [0.26.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.25.1...v0.26.0) (2026-05-10)
 
 ### 🚀 Features
