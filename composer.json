@@ -1,6 +1,6 @@
 {
-  "name": "raptorxilef/php-js-dev-env-blueprint",
-  "description": "Testumgebung meiner NPM/package.json Einstellungen",
+  "name": "raptorxilef/kga-einfahrgenehmigung",
+  "description": "Entwicklungsumgebung zur Entwicklung OOP/DTO-basierte PHP und JS Systeme",
   "type": "project",
   "license": "CC-BY-NC-SA-4.0",
   "authors": [
@@ -12,9 +12,16 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=8.4",
-    "ext-zip": "*",
+    "php": "^8.3",
+    "ext-json": "*",
     "ext-mbstring": "*",
+    "ext-zip": "*",
+    "ext-curl": "*",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
+    "ext-gd": "*",
+    "ext-hash": "*",
+    "ext-openssl": "*",
     "vlucas/phpdotenv": "^5.6",
     "ezyang/htmlpurifier": "^4.19"
   },
@@ -48,6 +55,9 @@
     }
   },
   "config": {
+    "platform": {
+      "php": "8.5.0"
+    },
     "vendor-dir": "vendor/",
     "optimize-autoloader": true,
     "allow-plugins": {
@@ -56,8 +66,12 @@
       "dealerdirect/phpcodesniffer-composer-installer": true
     }
   },
+  "extra": {
+    "tested-php-versions": ["8.3", "8.5"]
+  },
   "scripts": {
     "// --- PHASE 0: SETUP & LIFECYCLE ---": "Initialisierung und Bereinigung",
+    "generate-context": "php scripts/generate_context.php",
     "legacy:collect": "pwsh.exe -ExecutionPolicy Bypass -Command \"& (Get-Item scripts/Collect-All*.ps1).FullName\"",
     "setup": "@php scripts/console.php init",
     "clear": "@php scripts/console.php clear",
@@ -66,8 +80,9 @@
     "post-autoload-dump": "@setup",
 
     "// --- PHASE 1: STATIC ANALYSIS (CHECKING) ---": "Read-Only Qualitätsprüfungen",
+    "chk:stan-create-baseline": "phpstan analyse --generate-baseline",
+    "// ------": "",
     "chk:stan": "phpstan analyse --memory-limit=2G",
-    "chk:stan-baseline": "phpstan analyse --generate-baseline",
     "chk:cs": "phpcs",
     "chk:style": "php-cs-fixer fix --dry-run --diff --no-interaction",
     "chk:md": "phpmd analyze src --format text --ruleset phpmd.xml.dist",

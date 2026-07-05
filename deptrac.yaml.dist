@@ -1,5 +1,5 @@
-# @file deptrac.yaml
-# @description Erzwingt die architektonische Integrität.
+# Path: deptrac.yaml
+# @description Erzwingt die architektonische Integrität des universellen OOP/DTO Blueprints.
 
 deptrac:
   paths:
@@ -7,38 +7,76 @@ deptrac:
   cache_file: .cache/deptrac/.deptrac.cache
 
   layers:
-    - name: Contracts
+    - name: Domain # Reines Datenmodell (Entities, ValueObjects)
+      collectors:
+        - type: directory
+          value: src/Core/Entity/.*
+        - type: directory
+          value: src/Core/ValueObject/.*
+
+    - name: Contracts # Schnittstellen/Interfaces (z.B. UserRepositoryInterface)
       collectors:
         - type: directory
           value: src/Contracts/.*
-    - name: Core
+
+    - name: Core # Anwendungsspezifische Logik (Services, Events, DTOs)
       collectors:
         - type: directory
           value: src/Core/.*
-    - name: Infrastructure
+      exclude_collectors:
+        - type: directory
+          value: src/Core/Entity/.*
+        - type: directory
+          value: src/Core/ValueObject/.*
+
+    - name: Infrastructure # Externe Implementierungen (MySQL-Repository, Mailer, API-Clients)
       collectors:
         - type: directory
           value: src/Infrastructure/.*
-    - name: Application
+
+    - name: Application # Einstiegspunkt (Controller/Actions, HTTP, CLI, Middlewares)
       collectors:
         - type: directory
           value: src/Application/.*
 
-  ruleset:
-    # Contracts sind die Basis und dürfen von NIEMANDEM abhängen
-    Contracts: ~
+    - name: Bootstrap # DI-Container, Configuration, App-Initialisierung
+      collectors:
+        - type: directory
+          value: src/Bootstrap/.*
 
-    # Der Core darf nur Contracts kennen (Interfaces)
+  ruleset:
+    # 1. Domain ist unabhängig von allem.
+    Domain: ~
+
+    # 2. Contracts kennen nur die Domain (für Typisierungen).
+    Contracts:
+      - Domain
+
+    # 3. Core nutzt Contracts und Domain. Hier leben deine DTOs und Services.
     Core:
       - Contracts
+      - Domain
 
-    # Infrastructure (DB, Mail, etc.) darf Core und Contracts nutzen
+    # 4. INFRASTRUKTUR: Kennt KEINEN Core mehr!
+    # Sie implementiert nur die Contracts und nutzt Domain-Objekte.
     Infrastructure:
-      - Core
       - Contracts
+      - Domain
 
-    # Die Application-Schicht orchestriert alles
+    # 5. Application nimmt Input an, baut DTOs und schickt sie in den Core.
     Application:
-      - Core
-      - Infrastructure
       - Contracts
+      - Core
+      - Domain
+      - Bootstrap
+
+    # 6. Bootstrap darf alles kennen, um die Abhängigkeiten via DI-Container aufzulösen.
+    Bootstrap:
+      - Application
+      - Contracts
+      - Core
+      - Domain
+      - Infrastructure
+
+  # Wir brauchen KEINE Ausnahmen mehr! Das System ist zu 100% sauber entkoppelt.
+  # skip_violations: ~

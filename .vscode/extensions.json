@@ -39,7 +39,7 @@
         // CODE QUALITY & DOKU
         "aaron-bond.better-comments", // Bessere Kommentare
         "DavidAnson.vscode-markdownlint",
-        "gruntfuggly.todo-tree",
+        "fanaticpythoner.better-todo-tree",
         "oderwat.indent-rainbow",
         "streetsidesoftware.code-spell-checker-german",
         "streetsidesoftware.code-spell-checker",
@@ -61,8 +61,19 @@
         "nobuhito.printcode",
 
         // THEME/VSCODE
-        "lakshits11.monokai-pirokai",
-        "st-pham.php-refactor-tool"
+        // "lakshits11.monokai-pirokai",
+        "st-pham.php-refactor-tool",
+        "vira.vsc-vira-theme",
+
+        // Unsortiert
+        "devsense.composer-php-vscode",
+        "repreng.csv",
+        "jmkrivocapich.drawfolderstructure",
+        "kisstkondoros.vscode-gutter-preview",
+        "glenn2223.live-sass",
+        "yzhang.markdown-all-in-one",
+        "mehedidracula.php-namespace-resolver",
+        "redhat.vscode-xml"
     ],
     // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
     "unwantedRecommendations": ["htmlhint.vscode-htmlhint", "mikebovenlander.formate"]
