@@ -1,6 +1,6 @@
 {
   "name": "@raptorxilef/php-js-dev-env-blueprint",
-  "version": "0.27.0",
+  "version": "0.27.1",
   "description": "Entwicklungsumgebung zur Entwicklung OOP/DTO-basierte PHP und JS Systeme",
   "type": "module",
   "author": "Felix Maywald <RaptorXilef>",

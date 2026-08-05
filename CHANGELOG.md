@@ -1,6 +1,14 @@
 # Changelog
 
+## [0.27.1](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.27.0...v0.27.1) (2026-08-05)
 
+### 🐛 Bug Fixes
+
+* **scripts:** prevent deletion of PHP 8 attributes in token optimizer ([2095832](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/20958326eefb2ae990a1ac2c8c68539b1d573842))
+
+### 🏗️ Build System
+
+* migrate release-it pipeline to ES modules and update changelog generator dependencies ([14762ff](https://github.com/RaptorXilef/php-js-dev-env-blueprint/commit/14762ffa3da173a7b7a542be3f7112a59f7b8698))
 
 ## [0.27.0](https://github.com/RaptorXilef/php-js-dev-env-blueprint/compare/v0.26.0...v0.27.0) (2026-07-05)
 
