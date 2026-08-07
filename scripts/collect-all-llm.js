@@ -153,7 +153,8 @@ function optimizeTokens(content, fileExtension) {
                 // Nur wenn ein Annotation-Tag existiert ab in den schützenden Tresor
                 if (match.includes('@')) {
                     const id = `___BLOCK_PLACEHOLDER_${blockId++}___`;
-                    blockMap.set(id, match);
+                    // Zeilenumbrüche (\n) hinzufügen, damit es gut lesbar bleibt
+                    blockMap.set(id, `\n${match}\n`);
                     return id;
                 }
                 // Ansonsten lassen wir es stehen, damit der nächste Schritt es löscht
@@ -224,6 +225,7 @@ function optimizeTokens(content, fileExtension) {
                     !line.startsWith('<') ||
                     (!lastLine.endsWith('>') && !lastLine.endsWith('?>'))
                 ) {
+                    // Nutzt jetzt ein sauberes Template-Literal für den Space
                     optimizedLines[optimizedLines.length - 1] += ` ${line}`;
                     continue;
                 }
