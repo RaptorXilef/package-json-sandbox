@@ -20,7 +20,6 @@ const ALWAYS_IGNORE_DIRS = [
     '.git',
     '.cache',
     '.build',
-    '.old-5.0.0-alpha.23',
 ];
 
 const ALWAYS_IGNORE_PATHS = ['public/assets', 'public/dev'];
@@ -67,42 +66,44 @@ try {
     console.warn(`${c.yellow}⚠️ package.json nicht gefunden oder fehlerhaft.${c.reset}`);
 }
 
+// Dynamischer Zielordner basierend auf der Version
 const debugFolder = path.join(basePath, '.debug', version);
 
 // --- 2. Filter-Konfigurationen ---
+// Alle Exporte nutzen jetzt .md für optimales LLM-Parsing
 const configs = {
     JS: {
         name: 'JsCode',
         filter: /\.js$/,
-        ext: '.js',
+        ext: '.md',
         exclDirs: ['public/assets'],
         exclFiles: ['svgo.config', 'purgecss.config', 'eslint.config', 'commitlint.config'],
     },
     PHP: {
         name: 'PhpCode',
         filter: /\.php$/,
-        ext: '.php',
+        ext: '.md',
         exclDirs: ['tests'],
         exclFiles: ['php-cs-fixer.dist', 'rector.php'],
     },
     PHTML: {
         name: 'PhtmlCode',
         filter: /\.phtml$/,
-        ext: '.phtml',
+        ext: '.md',
         exclDirs: [],
         exclFiles: [],
     },
     SCSS: {
         name: 'ScssCode',
         filter: /\.scss$/,
-        ext: '.scss',
+        ext: '.md',
         exclDirs: [],
         exclFiles: [],
     },
     PROJECT: {
         name: 'ProjektZusammenfassung',
         filter: /\.(js|php|phtml|scss)$/,
-        ext: '.txt',
+        ext: '.md',
         exclDirs: [],
         exclFiles: [],
     },
@@ -144,9 +145,15 @@ function optimizeTokens(content, fileExtension) {
     }
 
     // =========================================================================
-    // 2. KOMMENTARE ENTFERNEN (und DocBlocks verarbeiten)
+    // 2. KOMMENTARE ENTFERNEN & OPERATOR-PADDING
     // =========================================================================
-    if (isJsOrScss || isPhpOrPhtml) {
+    const operatorRegex = /(?<!<\?)\s*(===|!==|<=|>=|=>|==|!=|\+=|-=|=)\s*/g;
+
+    // Verhindert global, dass URLs (http://) in SCSS/JS als Kommentar gewertet werden
+    const singleLineCommentRegex = /(?<!https?:|ftp:|file:|\\)\/\/.*$/gim;
+
+    if (isJsOrScss) {
+        // SCSS / JS Logic (läuft global über die Datei)
         // Wenn aktiviert, behalte DocBlocks (/** ... */) die ein '@' enthalten
         if (globalKeepDocBlocks) {
             optimizedContent = optimizedContent.replace(/\/\*\*[\s\S]*?\*\//g, (match) => {
@@ -164,52 +171,51 @@ function optimizeTokens(content, fileExtension) {
 
         // Multi-line Kommentare /* ... */ (löscht alles was nicht im Tresor ist)
         optimizedContent = optimizedContent.replace(/\/\*[\s\S]*?\*\//g, '');
-
-        // Single-line Kommentare // ...
-        // FIX: (?<!\\) ignoriert Regex escaped slashes wie \/\/
-        optimizedContent = optimizedContent.replace(/(?<!\\)\/\/(?:(?!\?>).)*(?=\?>|$)/gm, '');
-
-        if (isPhpOrPhtml) {
-            // HTML-Kommentare sicher entfernen
-            optimizedContent = optimizedContent.replace(/<!--[\s\S]*?-->/g, '');
-
-            // SQL / CSS-ähnliche Kommentare (-- )
-            optimizedContent = optimizedContent.replace(/(?<!!)--\s.*$/gm, '');
-
-            // # Kommentare NUR in reinen .php Dateien löschen.
-            // In .phtml zerstören sie sonst CSS-IDs (z.B. <style> #id { ... } </style>)
-            if (ext === '.php') {
-                optimizedContent = optimizedContent.replace(
-                    /(^|[^"'])#(?!\[)(?:(?!\?>).)*(?=\?>|$)/gm,
-                    (_match, prefix) => {
-                        return prefix;
-                    }
-                );
-            }
-        }
-    }
-
-    // =========================================================================
-    // 3. OPERATOR-PADDING (Der "=" Fix für HTML-Attribute)
-    // =========================================================================
-    const operatorRegex = /(?<!<\?)\s*(===|!==|<=|>=|=>|==|!=|\+=|-=|=)\s*/g;
-
-    if (ext === '.js' || ext === '.scss') {
-        // JS und SCSS können global padded werden
+        optimizedContent = optimizedContent.replace(singleLineCommentRegex, '');
         optimizedContent = optimizedContent.replace(operatorRegex, ' $1 ');
-    } else if (ext === '.php' || ext === '.phtml') {
-        // In PHP/PHTML wird das Padding NUR NOCH innerhalb von <?php ... ?> angewendet!
-        // HTML Attribute (href=) bleiben somit zu 100% unangetastet.
+    } else if (isPhpOrPhtml) {
+        // HTML & SQL Kommentare (laufen sicher global über die Datei)
+        optimizedContent = optimizedContent.replace(/<!--[\s\S]*?-->/g, '');
+        optimizedContent = optimizedContent.replace(/(?<!!)--\s.*$/gm, '');
+
+        // FIX: PHP Kommentare STRIKT auf <?php ... ?> Blöcke begrenzen!
+        // HTML bleibt von // und /* unangetastet.
         optimizedContent = optimizedContent.replace(
-            /(<\?[pP][hH][pP]|<\?=)([\s\S]*?)(?:\?>|$)/g,
-            (_match, openTag, phpCode) => {
-                return openTag + phpCode.replace(operatorRegex, ' $1 ');
+            /(<\?[pP][hH][pP]|<\?=)([\s\S]*?)(\?>|$)/g,
+            (_match, openTag, phpCode, closeTag) => {
+                // DocBlocks
+                if (globalKeepDocBlocks) {
+                    phpCode = phpCode.replace(/\/\*\*[\s\S]*?\*\//g, (match) => {
+                        if (match.includes('@')) {
+                            const id = `___BLOCK_PLACEHOLDER_${blockId++}___`;
+                            blockMap.set(id, `\n${match}\n`);
+                            return id;
+                        }
+                        return match;
+                    });
+                }
+
+                // PHP /* */
+                phpCode = phpCode.replace(/\/\*[\s\S]*?\*\//g, '');
+
+                // PHP //
+                phpCode = phpCode.replace(singleLineCommentRegex, '');
+
+                // PHP #
+                if (ext === '.php') {
+                    phpCode = phpCode.replace(/(^|[^"'])#(?!\[).*$/gm, (_m, prefix) => prefix);
+                }
+
+                // PHP Operatoren
+                phpCode = phpCode.replace(operatorRegex, ' $1 ');
+
+                return openTag + phpCode + closeTag;
             }
         );
     }
 
     // =========================================================================
-    // 4. ZEILEN & WHITESPACE MINIMIEREN
+    // 3. ZEILEN & WHITESPACE MINIMIEREN
     // =========================================================================
     const lines = optimizedContent.split(/\r?\n/);
     const optimizedLines = [];
@@ -263,7 +269,7 @@ function optimizeTokens(content, fileExtension) {
     let joinedResult = optimizedLines.join('\n');
 
     // =========================================================================
-    // 5. TRESOR WIEDERHERSTELLEN (Blöcke & Strings)
+    // 4. TRESOR WIEDERHERSTELLEN (Blöcke & Strings)
     // =========================================================================
     blockMap.forEach((originalBlock, placeholderKey) => {
         joinedResult = joinedResult.split(placeholderKey).join(originalBlock);
@@ -419,9 +425,29 @@ function startFileCollection(configKey, silent = false) {
             const rawContent = fs.readFileSync(file.fullPath, 'utf-8');
             const optimizedContent = optimizeTokens(rawContent, file.ext);
 
-            combinedContent += `// ========== START FILE: [${file.relPath}] ==========\n`;
+            // =================================================================
+            // NEU: Saubere Markdown Formatierung für LLMs
+            // =================================================================
+            const extName = file.ext.toLowerCase().replace('.', '');
+
+            // Map Dateiendung zu Markdown-Sprache
+            const langMap = {
+                js: 'javascript',
+                php: 'php',
+                phtml: 'html', // PHTML wird oft am besten als HTML vom LLM formatiert
+                scss: 'scss',
+            };
+            const lang = langMap[extName] || extName;
+
+            // Sorge für saubere Forward-Slashes im Markdown-Pfad
+            const mdPath = file.relPath.replace(/\\/g, '/');
+
+            combinedContent += `### /${mdPath}\n`;
+            combinedContent += `\`\`\`${lang}\n`;
             combinedContent += `${optimizedContent}\n`;
-            combinedContent += `// ========== END FILE: [${file.relPath}] ==========\n\n`;
+            combinedContent += `\`\`\`\n\n`;
+            // =================================================================
+
             if (!silent) console.log(`${c.gray} + [Optimiert] ${file.relPath}${c.reset}`);
         } catch (_e) {
             if (!silent) console.log(`${c.gray} ! Überspringe (Binär?): ${file.relPath}${c.reset}`);
@@ -443,17 +469,11 @@ function showHelp() {
         { Argument: '--php', Beschreibung: 'Sammelt & optimiert nur PHP Dateien' },
         { Argument: '--phtml', Beschreibung: 'Sammelt & optimiert nur PHTML Dateien' },
         { Argument: '--scss', Beschreibung: 'Sammelt & optimiert nur SCSS Dateien' },
-        { Argument: '--project', Beschreibung: 'Projektweite Zusammenfassung (*.txt)' },
-        {
-            Argument: '--mirror',
-            Beschreibung: 'Spiegelt die gesamte optimierte Ordnerstruktur (Punkt 6)',
-        },
+        { Argument: '--project', Beschreibung: 'Projektweite Zusammenfassung (*.md)' },
+        { Argument: '--mirror', Beschreibung: 'Spiegelt die gesamte optimierte Ordnerstruktur' },
         { Argument: '--all', Beschreibung: 'Führt Punkt 1-4 automatisch aus' },
         { Argument: '--root', Beschreibung: 'Bezieht Dateien im Root-Verzeichnis mit ein' },
-        {
-            Argument: '--docblocks',
-            Beschreibung: 'Behält DocBlocks mit @-Tags bei (hängt _docblock an den Dateinamen)',
-        },
+        { Argument: '--docblocks', Beschreibung: 'Behält DocBlocks mit @-Tags bei' },
         { Argument: '--help', Beschreibung: 'Zeigt diese Hilfe an' },
     ]);
     console.log(`${c.gray}Info: Im CI-Modus (mit Argumenten) läuft das Skript stumm.${c.reset}\n`);
@@ -501,12 +521,12 @@ if (args.length > 0) {
         console.log(`${c.cyan}    Root: ${c.gray}${basePath}${c.reset}`);
         console.log(`${c.cyan}    Ziel: ${c.yellow}.debug/${version}/${c.reset}`);
         console.log(`${c.cyan}===============================================${c.reset}`);
-        console.log(`${c.bright} 1)${c.reset} JavaScript (*.js)`);
-        console.log(`${c.bright} 2)${c.reset} PHP (*.php)`);
-        console.log(`${c.bright} 3)${c.reset} PHTML (*.phtml)`);
-        console.log(`${c.bright} 4)${c.reset} SCSS (*.scss)`);
+        console.log(`${c.bright} 1)${c.reset} JavaScript (*.md)`);
+        console.log(`${c.bright} 2)${c.reset} PHP (*.md)`);
+        console.log(`${c.bright} 3)${c.reset} PHTML (*.md)`);
+        console.log(`${c.bright} 4)${c.reset} SCSS (*.md)`);
         console.log(
-            `${c.bright} 5)${c.reset} ${c.magenta}PROJEKT-ZUSAMMENFASSUNG${c.reset} (*.txt)`
+            `${c.bright} 5)${c.reset} ${c.magenta}PROJEKT-ZUSAMMENFASSUNG${c.reset} (*.md)`
         );
         console.log(
             `${c.bright} 6)${c.reset} ${c.green}PROJEKT-STRUKTUR SPIEGELN${c.reset} (Einzeldateien in Verzeichnissen)`
